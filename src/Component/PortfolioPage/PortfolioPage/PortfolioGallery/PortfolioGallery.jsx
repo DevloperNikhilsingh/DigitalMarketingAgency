@@ -7,9 +7,6 @@ import portfolioProjects from "./portfolioData";
 
 const INITIAL_COUNT = 14;
 
-// TODO: replace with your actual Google Drive folder/file link
-const DRIVE_LINK = "https://drive.google.com/drive/folders/YOUR_FOLDER_ID";
-
 const sizeClass = {
   tall: "row-span-2",
   wide: "sm:col-span-2",
@@ -19,6 +16,7 @@ const sizeClass = {
 const PortfolioGallery = () => {
   const [activeCategory, setActiveCategory] = useState("All Works");
   const [searchTerm, setSearchTerm] = useState("");
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
   const filteredProjects = useMemo(() => {
     const term = searchTerm.trim().toLowerCase();
@@ -34,14 +32,17 @@ const PortfolioGallery = () => {
     });
   }, [activeCategory, searchTerm]);
 
-  const visibleProjects = filteredProjects.slice(0, INITIAL_COUNT);
+  const visibleProjects = filteredProjects.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredProjects.length;
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
+    setVisibleCount(INITIAL_COUNT);
   };
 
   const handleSearchChange = (value) => {
     setSearchTerm(value);
+    setVisibleCount(INITIAL_COUNT);
   };
 
   return (
@@ -66,7 +67,7 @@ const PortfolioGallery = () => {
         ) : (
           <motion.div
             layout
-            className="mt-8 grid auto-rows-55 grid-cols-1 gap-4 sm:grid-cols-2 sm:auto-rows-60 lg:grid-cols-4"
+            className="mt-8 grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 sm:auto-rows-[240px] lg:grid-cols-4"
           >
             <AnimatePresence mode="popLayout">
               {visibleProjects.map((project) => (
@@ -80,19 +81,17 @@ const PortfolioGallery = () => {
           </motion.div>
         )}
 
-        <div className="mt-10 flex justify-center">
-          <motion.a
-            href={DRIVE_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 rounded-full bg-[#14213D] px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-black"
-          >
-            View All
-            <ArrowRight size={16} />
-          </motion.a>
-        </div>
+        {hasMore && (
+          <div className="mt-10 flex justify-center">
+            <button
+              onClick={() => setVisibleCount((c) => c + 8)}
+              className="inline-flex items-center gap-2 rounded-full bg-[#14213D] px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-black"
+            >
+              Explore More Works
+              <ArrowRight size={16} />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

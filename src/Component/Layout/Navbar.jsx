@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import AuthModal from '../Auth/AuthModal'
+import UserMenu from './UserMenu'
+import { useAuth } from '../../Context/AuthContext'
 
 const navLinks = [
     { name: 'Home', link: '/' },
@@ -15,11 +17,14 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [authOpen, setAuthOpen] = useState(false)
     const location = useLocation()
+    const { user, logout } = useAuth()
 
     const isActive = (linkPath) => {
         if (linkPath === '/') return location.pathname === '/'
         return location.pathname.startsWith(linkPath)
     }
+
+    const dashboardPath = user?.role === 'admin' ? '/admin/dashboard' : '/employer/dashboard'
 
     return (
         <nav className='w-full bg-black sticky top-0 z-50 shadow-lg'>
@@ -49,13 +54,20 @@ const Navbar = () => {
                     ))}
                 </div>
 
-                <button
-                    onClick={() => setAuthOpen(true)}
-                    className='hidden md:flex w-32.5 h-9.5 justify-center items-center bg-amber-400 text-black text-sm font-bold rounded-md shadow-md
-                        transition-all duration-300 ease-in-out hover:bg-amber-300 hover:shadow-amber-400/40 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:scale-95'
-                >
-                    Login & Register
-                </button>
+                {/* Desktop: avatar menu if logged in, else Login & Register */}
+                <div className='hidden md:block'>
+                    {user ? (
+                        <UserMenu />
+                    ) : (
+                        <button
+                            onClick={() => setAuthOpen(true)}
+                            className='flex w-32.5 h-9.5 justify-center items-center bg-amber-400 text-black text-sm font-bold rounded-md shadow-md
+                                transition-all duration-300 ease-in-out hover:bg-amber-300 hover:shadow-amber-400/40 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:scale-95'
+                        >
+                            Login & Register
+                        </button>
+                    )}
+                </div>
 
                 <button
                     className='md:hidden text-white p-1 transition-transform duration-300 active:scale-90'
@@ -105,13 +117,35 @@ const Navbar = () => {
                             {link.name}
                         </Link>
                     ))}
-                    <button
-                        onClick={() => { setIsOpen(false); setAuthOpen(true) }}
-                        className='w-full h-9.5 mt-2 flex justify-center items-center bg-amber-400 text-black text-sm font-bold rounded-md shadow-md
-                            transition-all duration-300 hover:bg-amber-300 active:scale-95'
-                    >
-                        Login & Register
-                    </button>
+
+                    {/* Mobile: Dashboard/Logout if logged in, else Login & Register */}
+                    {user ? (
+                        <div className='flex flex-col gap-2 mt-2'>
+                            <Link
+                                to={dashboardPath}
+                                onClick={() => setIsOpen(false)}
+                                className='w-full h-9.5 flex justify-center items-center bg-amber-400 text-black text-sm font-bold rounded-md
+                                    transition-all duration-300 hover:bg-amber-300 active:scale-95'
+                            >
+                                Dashboard
+                            </Link>
+                            <button
+                                onClick={() => { setIsOpen(false); logout() }}
+                                className='w-full h-9.5 flex justify-center items-center border border-amber-400 text-white text-sm font-bold rounded-md
+                                    transition-all duration-300 hover:bg-amber-400 hover:text-black active:scale-95'
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    ) : (
+                        <button
+                            onClick={() => { setIsOpen(false); setAuthOpen(true) }}
+                            className='w-full h-9.5 mt-2 flex justify-center items-center bg-amber-400 text-black text-sm font-bold rounded-md shadow-md
+                                transition-all duration-300 hover:bg-amber-300 active:scale-95'
+                        >
+                            Login & Register
+                        </button>
+                    )}
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Search, LayoutGrid, Triangle, FileEdit, Mail, Code, ArrowRight } from 'lucide-react'
+import { Search, LayoutGrid, Triangle, Video, Mail, Code, ArrowRight } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -44,17 +44,17 @@ const services = [
         btn: 'bg-blue-400',
     },
     {
-        number: '04',
-        icon: FileEdit,
-        title: 'Content Marketing',
-        desc: 'Powerful content that informs, engages & converts.',
-        link: '/services/content-marketing',
-        bg: 'bg-purple-400',
-        text: 'text-purple-500',
-        underline: 'bg-purple-400',
-        glow: 'from-purple-200/40',
-        btn: 'bg-purple-400',
-    },
+    number: '04',
+    icon: Video,
+    title: 'Video Editing',
+    desc: 'Polished, professional videos that capture attention.',
+    link: '/services/video-editing',
+    bg: 'bg-purple-400',
+    text: 'text-purple-500',
+    underline: 'bg-purple-400',
+    glow: 'from-purple-200/40',
+    btn: 'bg-purple-400',
+},
     {
         number: '05',
         icon: Mail,

@@ -10,6 +10,11 @@ import Portfolio from './Pages/Portfolio'
 import { AuthProvider } from './Context/AuthContext'
 import AdminDashboard from './Pages/AdminDashboard'
 import EmployerDashboard from './Pages/EmployerDashboard'
+import AdminServiceRequests from './Pages/AdminServiceRequests'
+import AdminEmployers from './Pages/AdminEmployers'
+import AdminMyServices from './Pages/AdminMyServices'
+import AdminSettings from './Pages/AdminSetting'
+import AdminNewServices from './Pages/AdminNewServices'
 
 function App() {
   return (
@@ -26,6 +31,11 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/admin/dashboard' element={<AdminDashboard />} />
         <Route path='/employer/dashboard' element={<EmployerDashboard />} />
+        <Route path='/admin/dashboard/requests' element={<AdminServiceRequests />} />
+        <Route path='/admin/dashboard/employers' element={<AdminEmployers />} />
+        <Route path='/admin/dashboard/services' element={<AdminMyServices />} />
+        <Route path='/admin/dashboard/settings' element={<AdminSettings />} />
+        <Route path='/admin/dashboard/newservices' element={<AdminNewServices />} />
       </Routes>
     </BrowserRouter>
     </AuthProvider>

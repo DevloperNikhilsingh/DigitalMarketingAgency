@@ -37,7 +37,7 @@ const ServiceRequestForm = ({ serviceName }) => {
             <div className='max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-14 items-center'>
 
                 {/* Left side */}
-                <div className='order-2 md:order-1 text-center md:text-left'>
+                <div className='order-1 md:order-1 text-center md:text-left'>
                     <span className='inline-flex items-center gap-2 border border-purple-200 text-purple-600 text-xs font-bold tracking-widest px-4 py-1.5 rounded-full mb-6'>
                         <span className='w-1.5 h-1.5 rounded-full bg-purple-500'></span>
                         LET'S WORK TOGETHER
@@ -79,7 +79,7 @@ const ServiceRequestForm = ({ serviceName }) => {
                 </div>
 
                 {/* Right side - form */}
-                <div className='order-1 md:order-2 bg-white rounded-2xl shadow-lg p-5 sm:p-8'>
+                <div className='order-2 md:order-2 bg-white rounded-2xl shadow-lg p-5 sm:p-8'>
                     {submitted ? (
                         <div className='text-center py-10'>
                             <div className='w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4'>

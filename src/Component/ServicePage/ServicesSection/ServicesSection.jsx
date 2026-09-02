@@ -70,23 +70,23 @@ const ServicesSection = () => {
           />
         </div>
 
-        {/* Filter tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mt-6">
-          {filters.map((filter) => (
-            <motion.button
-              key={filter}
-              onClick={() => handleFilterChange(filter)}
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.95 }}
-              className={`px-4 py-2 rounded-md text-sm font-medium border transition-colors ${activeFilter === filter
-                  ? "bg-yellow-400 border-yellow-400 text-gray-900"
-                  : "bg-white border-gray-200 text-gray-600 hover:border-yellow-400"
-                }`}
-            >
-              {filter}
-            </motion.button>
-          ))}
-        </div>
+       {/* Filter tabs */}
+<div className="flex md:flex-wrap md:justify-center gap-3 mt-6 overflow-x-auto md:overflow-visible pb-2 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
+  {filters.map((filter) => (
+    <motion.button
+      key={filter}
+      onClick={() => handleFilterChange(filter)}
+      whileHover={{ scale: 1.06 }}
+      whileTap={{ scale: 0.95 }}
+      className={`shrink-0 px-4 py-2 rounded-md text-sm font-medium border transition-colors ${activeFilter === filter
+          ? "bg-yellow-400 border-yellow-400 text-gray-900"
+          : "bg-white border-gray-200 text-gray-600 hover:border-yellow-400"
+        }`}
+    >
+      {filter}
+    </motion.button>
+  ))}
+</div>
 
         {/* Service cards */}
         <motion.div

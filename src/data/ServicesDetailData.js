@@ -29,16 +29,16 @@ export const serviceDetails = {
             { name: 'Shopping Ads Campaign', result: '+95% Sales', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80' },
         ],
     },
-    'content-marketing': {
-        title: 'Content Marketing',
-        tagline: 'Powerful content that informs, engages & converts.',
-        description: 'We create blogs, videos, and social content that build trust with your audience and guide them toward becoming paying customers.',
-        examples: [
-            { name: 'Blog Strategy', result: '+70% Traffic', image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&q=80' },
-            { name: 'Video Content Series', result: '+50k Views', image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&q=80' },
-            { name: 'Brand Storytelling', result: '+40% Engagement', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80' },
-        ],
-    },
+    'video-editing': {
+    title: 'Video Editing',
+    tagline: 'Polished, professional videos that capture attention.',
+    description: 'We edit and produce high-quality videos with seamless cuts, motion graphics, and sound design that keep your audience engaged and drive your message home.',
+    examples: [
+        { name: 'Promo Video Edit', result: '+80% Watch Time', image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&q=80' },
+        { name: 'Social Media Reels', result: '+120% Shares', image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=400&q=80' },
+        { name: 'Brand Video Production', result: '+60% Engagement', image: 'https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=400&q=80' },
+    ],
+},
     'email-marketing': {
         title: 'Email Marketing',
         tagline: 'Nurture leads and increase conversions with email.',

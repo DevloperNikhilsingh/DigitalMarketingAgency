@@ -1,4 +1,4 @@
-import { Search, Grid3x3, Triangle, PenTool, Mail, Code2, BarChart3, Megaphone, Target, Share2, FileText, Smartphone, Play, LineChart, ShoppingCart, Globe, } from "lucide-react";
+import { Search, Grid3x3, Triangle, Video,  PenTool, Mail, Code2, BarChart3, Megaphone, Target, Share2, FileText, Smartphone, Play, LineChart, ShoppingCart, Globe, } from "lucide-react";
 
 export const services = [
   { id: 1, slug: "seo", icon: Search, iconBg: "bg-yellow-400", title: "Search Engine Optimization", desc: "Improve your website ranking and get discovered by the right audience.", linkColor: "text-yellow-500", category: "SEO" },
@@ -17,6 +17,7 @@ export const services = [
   { id: 14, slug: "analytics-reporting", icon: LineChart, iconBg: "bg-amber-400", title: "Analytics & Reporting", desc: "Clear, actionable dashboards that track what actually matters.", linkColor: "text-amber-500", category: "Digital Marketing" },
   { id: 15, slug: "email-automation", icon: ShoppingCart, iconBg: "bg-lime-500", title: "Email Automation", desc: "Automated drip sequences that nurture leads while you sleep.", linkColor: "text-lime-600", category: "Email Marketing" },
   { id: 16, slug: "ecommerce-website-design", icon: Globe, iconBg: "bg-sky-400", title: "E-commerce Website Design", desc: "Fast, conversion-focused online stores built to sell more.", linkColor: "text-sky-500", category: "Website Design" },
+   { id: 17, slug: "video-editing", icon: Video, iconBg: "bg-fuchsia-400", title: "Video Editing", desc: "Polished, professional videos that capture attention and drive engagement.", linkColor: "text-fuchsia-500", category: "Video Editing" },
 ];
 
 export const filters = [
@@ -24,6 +25,7 @@ export const filters = [
   "SEO",
   "Social Media",
   "Digital Marketing",
+  "Video Editing",
   "Google Ads",
   "Content Marketing",
   "Email Marketing",
