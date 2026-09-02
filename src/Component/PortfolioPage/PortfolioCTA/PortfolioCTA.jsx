@@ -9,7 +9,7 @@ const PortfolioCTA = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#F5A623] via-[#F5A623] to-[#E0900F] px-6 py-10 shadow-[0_20px_60px_-15px_rgba(245,166,35,0.5)] sm:px-12 sm:py-14 lg:w-[80%] lg:px-16"
+        className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-4xl bg-linear-to-br from-[#F5A623] via-[#F5A623] to-[#E0900F] px-6 py-10 shadow-[0_20px_60px_-15px_rgba(245,166,35,0.5)] sm:px-12 sm:py-14 lg:w-[80%] lg:px-16"
       >
         {/* Decorative layer */}
         <div className="pointer-events-none absolute inset-0">
@@ -50,7 +50,7 @@ const PortfolioCTA = () => {
             href="#contact"
             className="group relative inline-flex shrink-0 items-center gap-2 overflow-hidden rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
           >
-            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 transition-transform duration-700 group-hover:translate-x-full" />
+            <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-white/0 via-white/20 to-white/0 transition-transform duration-700 group-hover:translate-x-full" />
             <span className="relative">Start a Project</span>
             <ArrowRight
               size={15}

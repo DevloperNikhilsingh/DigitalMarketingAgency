@@ -20,14 +20,14 @@ const PortfolioCard = ({ project, className = "" }) => {
             e.currentTarget.src =
               "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=900&auto=format&fit=crop";
           }}
-          className="h-full min-h-[220px] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+          className="h-full min-h-55 w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
         />
 
         {/* base gradient so text always reads */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/85 via-black/10 to-transparent" />
 
         {/* hover accent overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F5A623]/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#F5A623]/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
         <span className="absolute left-4 top-4 rounded-md bg-black/70 px-3 py-1 text-[11px] font-medium tracking-wide text-white backdrop-blur-sm">
           {project.tag}
