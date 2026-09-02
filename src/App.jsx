@@ -15,6 +15,8 @@ import AdminEmployers from './Pages/AdminEmployers'
 import AdminMyServices from './Pages/AdminMyServices'
 import AdminSettings from './Pages/AdminSetting'
 import AdminNewServices from './Pages/AdminNewServices'
+import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute'
+import AdminEnquiries from './Pages/AdminEnquiries'
 
 function App() {
   return (
@@ -29,13 +31,31 @@ function App() {
         <Route path='/portfolio' element={<Portfolio />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/admin/dashboard' element={<AdminDashboard />} />
-        <Route path='/employer/dashboard' element={<EmployerDashboard />} />
-        <Route path='/admin/dashboard/requests' element={<AdminServiceRequests />} />
-        <Route path='/admin/dashboard/employers' element={<AdminEmployers />} />
-        <Route path='/admin/dashboard/services' element={<AdminMyServices />} />
-        <Route path='/admin/dashboard/settings' element={<AdminSettings />} />
-        <Route path='/admin/dashboard/newservices' element={<AdminNewServices />} />
+
+        <Route path='/admin/dashboard' element={
+          <ProtectedRoute role='admin'><AdminDashboard /></ProtectedRoute>
+        } />
+        <Route path='/admin/dashboard/requests' element={
+          <ProtectedRoute role='admin'><AdminServiceRequests /></ProtectedRoute>
+        } />
+        <Route path='/admin/dashboard/employers' element={
+          <ProtectedRoute role='admin'><AdminEmployers /></ProtectedRoute>
+        } />
+        <Route path='/admin/dashboard/services' element={
+          <ProtectedRoute role='admin'><AdminMyServices /></ProtectedRoute>
+        } />
+        <Route path='/admin/dashboard/settings' element={
+          <ProtectedRoute role='admin'><AdminSettings /></ProtectedRoute>
+        } />
+        <Route path='/admin/dashboard/newservices' element={
+          <ProtectedRoute role='admin'><AdminNewServices /></ProtectedRoute>
+        } />
+        <Route path='/admin/dashboard/enquiry' element={<ProtectedRoute><AdminEnquiries /></ProtectedRoute>
+        } />
+
+        <Route path='/employer/dashboard' element={
+          <ProtectedRoute role='employer'><EmployerDashboard /></ProtectedRoute>
+        } />
       </Routes>
     </BrowserRouter>
     </AuthProvider>

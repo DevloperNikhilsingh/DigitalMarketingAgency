@@ -18,8 +18,8 @@ const HomePage = () => {
     <Brand />
     <OurServices />
     <WhyChooseUs />
-    <PromoBanner />
     <PortfolioSection />
+    <PromoBanner />
     <PricingSection />
     <CTASection />
     <Footer />

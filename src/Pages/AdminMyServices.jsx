@@ -29,7 +29,7 @@ const AdminMyServices = () => {
             <main className='flex-1 p-4 md:p-6 flex flex-col gap-6 w-full min-w-0'>
                 {/* Page header — more like a real header bar */}
                 <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border border-gray-100 rounded-2xl px-5 py-4 shadow-sm'>
-                    <div>
+                    <div className=''>
                         <h1 className='font-extrabold text-lg text-gray-900'>My Services</h1>
                         <p className='text-gray-500 text-sm'>Manage the services you're currently offering.</p>
                     </div>

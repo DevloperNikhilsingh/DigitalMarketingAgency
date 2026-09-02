@@ -94,7 +94,7 @@ const ServiceRequestForm = ({ serviceName }) => {
                         <form onSubmit={handleSubmit}>
                             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4'>
                                 <div>
-                                    <label className='text-xs font-semibold text-gray-600 mb-1.5 block'>Your full name</label>
+                                    <label className='text-xs font-semibold text-gray-600 mb-1.5 block'>Your full name <span className='text-red-500'>*</span></label>
                                     <div className='flex items-center gap-2 border border-purple-200 rounded-lg px-3 py-2.5 focus-within:border-purple-400'>
                                         <User className='text-purple-400 shrink-0' size={16} />
                                         <input
@@ -108,7 +108,7 @@ const ServiceRequestForm = ({ serviceName }) => {
                                     </div>
                                 </div>
                                 <div>
-                                    <label className='text-xs font-semibold text-gray-600 mb-1.5 block'>Email address</label>
+                                    <label className='text-xs font-semibold text-gray-600 mb-1.5 block'>Email address <span className='text-red-500'>*</span></label>
                                     <div className='flex items-center gap-2 border border-purple-200 rounded-lg px-3 py-2.5 focus-within:border-purple-400'>
                                         <Mail className='text-purple-400 shrink-0' size={16} />
                                         <input
@@ -125,7 +125,7 @@ const ServiceRequestForm = ({ serviceName }) => {
 
                             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4'>
                                 <div>
-                                    <label className='text-xs font-semibold text-gray-600 mb-1.5 block'>Phone number</label>
+                                    <label className='text-xs font-semibold text-gray-600 mb-1.5 block'>Phone number <span className='text-red-500'>*</span></label>
                                     <div className='flex items-center gap-2 border border-purple-200 rounded-lg px-3 py-2.5 focus-within:border-purple-400'>
                                         <Phone className='text-purple-400 shrink-0' size={16} />
                                         <input

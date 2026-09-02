@@ -3,6 +3,7 @@ import { ArrowRight, Sparkles, TrendingUp } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroImage from '../../assets/HeroImage.png'
+import { useNavigate } from 'react-router-dom'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -16,6 +17,7 @@ const stats = [
 const HeroSection = () => {
     const statsRef = useRef(null)
     const numberRefs = useRef([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -61,7 +63,9 @@ const HeroSection = () => {
                             transition-all duration-300 ease-out hover:bg-yellow-300 hover:-translate-y-1 hover:shadow-yellow-400/50 hover:shadow-xl active:scale-90 active:translate-y-0'>
                             Get Started <ArrowRight size={16} className='transition-transform duration-300 group-hover:translate-x-1' />
                         </button>
-                        <button className='border border-white/30 text-white font-bold text-sm px-6 py-3 rounded-md
+                        <button
+                        onClick={() => navigate("/portfolio")}
+                        className='border border-white/30 text-white font-bold text-sm px-6 py-3 rounded-md
                             transition-all duration-300 ease-out hover:border-yellow-400 hover:text-yellow-400 hover:-translate-y-1 hover:bg-white/5 active:scale-90 active:translate-y-0'>
                             View Our Work
                         </button>

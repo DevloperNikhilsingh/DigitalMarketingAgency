@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { LayoutGrid, Layers, Users, Settings, LogOut, Globe, Menu, X, Briefcase, FileCheck  } from 'lucide-react'
+import { LayoutGrid, Layers, Users, Settings, LogOut, Globe, Menu, X, Briefcase, FileCheck, Bell  } from 'lucide-react'
 import { useAuth } from '../../../Context/AuthContext'
 
 const navItems = [
@@ -9,6 +9,7 @@ const navItems = [
     { icon: Layers, label: 'Service Requests', path: '/admin/dashboard/requests' },
     { icon: Users, label: 'Employers', path: '/admin/dashboard/employers' },
     { icon: FileCheck, label: 'New Services', path: '/admin/dashboard/newservices' },
+    { icon: Bell, label: 'Enquiry', path: '/admin/dashboard/enquiry' },
     { icon: Settings, label: 'Settings', path: '/admin/dashboard/settings' },
 ]
 

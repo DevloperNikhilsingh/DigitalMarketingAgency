@@ -16,9 +16,9 @@ const ServiceCard = ({ service, onToggleStatus, onDelete }) => {
                 <span className='flex items-center gap-1'>
                     <Tags size={12} className='text-amber-500' /> {service.category}
                 </span>
-                <span className='flex items-center gap-1'>
+                {/* <span className='flex items-center gap-1'>
                     <Clock size={12} className='text-amber-500' /> {service.deliveryTime}
-                </span>
+                </span> */}
                 <span className='flex items-center gap-1'>
                     <Users size={12} className='text-amber-500' /> {service.requests} Requests
                 </span>

@@ -95,21 +95,21 @@ const PromoBanner = () => {
     return (
         <section ref={sectionRef} className='w-full bg-neutral-50 py-10 md:py-16 px-4'>
             <div className='max-w-6xl mx-auto'>
-                <div className='relative bg-linear-to-br from-emerald-900 to-emerald-950 rounded-3xl overflow-hidden px-8 py-10 md:px-14 md:py-12'>
+                <div className='relative bg-amber-50 rounded-3xl overflow-hidden px-8 py-10 md:px-14 md:py-12 border border-amber-100'>
 
-                    <div className='absolute right-10 top-10 grid grid-cols-4 gap-2 opacity-30'>
+                    <div className='absolute right-10 top-10 grid grid-cols-4 gap-2 opacity-40'>
                         {Array.from({ length: 16 }).map((_, d) => (
-                            <span key={d} className='w-1.5 h-1.5 rounded-full bg-yellow-400'></span>
+                            <span key={d} className='w-1.5 h-1.5 rounded-full bg-yellow-500'></span>
                         ))}
                     </div>
 
                     <div className='grid md:grid-cols-2 gap-10 items-center relative z-10'>
 
                         <div ref={contentRef}>
-                            <h2 className='text-2xl md:text-4xl font-extrabold text-white leading-snug'>
+                            <h2 className='text-2xl md:text-4xl font-extrabold text-neutral-900 leading-snug'>
                                 Want To Promote Your Business With Us?
                             </h2>
-                            <p className='text-emerald-100/70 text-sm md:text-base mt-4 max-w-md'>
+                            <p className='text-neutral-600 text-sm md:text-base mt-4 max-w-md'>
                                 Reach thousands of potential customers and grow your business with powerful digital marketing.
                             </p>
                             <button
@@ -130,16 +130,16 @@ const PromoBanner = () => {
                         </div>
                     </div>
 
-                    <div ref={featuresRef} className='flex flex-wrap items-center justify-center md:justify-start gap-8 md:gap-12 mt-10 pt-8 border-t border-white/10 relative z-10'>
+                    <div ref={featuresRef} className='flex flex-wrap items-center justify-center md:justify-start gap-8 md:gap-12 mt-10 pt-8 border-t border-amber-200 relative z-10'>
                         {features.map((feature) => {
                             const Icon = feature.icon
                             return (
                                 <div key={feature.label} className='flex items-center gap-2 group cursor-default'>
-                                    <div className='w-8 h-8 rounded-full bg-white/10 flex items-center justify-center
+                                    <div className='w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm
                                         transition-all duration-300 ease-out group-hover:bg-yellow-400 group-hover:scale-110'>
-                                        <Icon className='text-yellow-400 transition-colors duration-300 group-hover:text-black' size={16} />
+                                        <Icon className='text-yellow-600 transition-colors duration-300 group-hover:text-black' size={16} />
                                     </div>
-                                    <span className='text-white text-sm font-semibold'>{feature.label}</span>
+                                    <span className='text-neutral-800 text-sm font-semibold'>{feature.label}</span>
                                 </div>
                             )
                         })}

@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import { Search, Eye, ChevronDown } from 'lucide-react'
 import StatusBadge from './StatusBadge'
 import RequestDetailModal from './RequestDetailModal'
-import { statusOptions } from '../../../data/ServiceDetailData'
+import { statusOptions } from '../../../data/ServiceRequestData'
 
 const ServiceRequestsTable = ({ requests: initialRequests }) => {
     const [requests, setRequests] = useState(initialRequests)

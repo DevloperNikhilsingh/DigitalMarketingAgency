@@ -1,41 +1,32 @@
 import React, { useState } from 'react'
-import { X, User, Briefcase, Phone, Mail, Calendar, Hash } from 'lucide-react'
-import StatusBadge from './StatusBadge'
-import { statusOptions } from '../../../data/ServiceRequestData'
+import { X, User, Mail, Phone, MessageSquare, Calendar, FileText } from 'lucide-react'
+import EnquiryStatusBadge from './EnquiryStatusBadge'
+import { enquiryStatusOptions } from '../../../data/AdminenquiriesData'
 
-const RequestDetailModal = ({ request, onClose, onStatusChange }) => {
-    const [status, setStatus] = useState(request.status)
+const EnquiryDetailModal = ({ enquiry, onClose, onStatusChange }) => {
+    const [status, setStatus] = useState(enquiry.status)
 
     const handleSave = () => {
-        onStatusChange(request.id, status)
+        onStatusChange(enquiry.id, status)
         onClose()
     }
 
     return (
         <div className='fixed inset-0 z-50 flex items-center justify-center p-4'>
-            <div
-                onClick={onClose}
-                className='absolute inset-0 bg-black/50 backdrop-blur-sm'
-            />
+            <div onClick={onClose} className='absolute inset-0 bg-black/50 backdrop-blur-sm' />
 
             <div className='relative bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto'>
                 <div className='flex items-center justify-between px-5 py-4 border-b border-gray-100 sticky top-0 bg-white'>
-                    <h3 className='font-extrabold text-gray-900'>Request Details</h3>
-                    <button
-                        onClick={onClose}
-                        className='p-1.5 rounded-md text-gray-500 hover:bg-gray-100 transition-colors duration-200'
-                        aria-label='Close'
-                    >
+                    <h3 className='font-extrabold text-gray-900'>Enquiry Details</h3>
+                    <button onClick={onClose} className='p-1.5 rounded-md text-gray-500 hover:bg-gray-100 transition-colors duration-200'>
                         <X size={18} />
                     </button>
                 </div>
 
                 <div className='p-5 flex flex-col gap-4'>
                     <div className='flex items-center justify-between'>
-                        <span className='flex items-center gap-2 text-xs font-semibold text-gray-400'>
-                            <Hash size={13} /> {request.id}
-                        </span>
-                        <StatusBadge status={request.status} />
+                        <span className='text-xs font-semibold text-gray-400'>{enquiry.id}</span>
+                        <EnquiryStatusBadge status={enquiry.status} />
                     </div>
 
                     <div className='flex flex-col gap-3'>
@@ -43,23 +34,7 @@ const RequestDetailModal = ({ request, onClose, onStatusChange }) => {
                             <User size={16} className='text-amber-500 mt-0.5 shrink-0' />
                             <div>
                                 <p className='text-xs text-gray-400'>Full Name</p>
-                                <p className='text-sm font-bold text-gray-900'>{request.name}</p>
-                            </div>
-                        </div>
-
-                        <div className='flex items-start gap-3'>
-                            <Briefcase size={16} className='text-amber-500 mt-0.5 shrink-0' />
-                            <div>
-                                <p className='text-xs text-gray-400'>Service Requested</p>
-                                <p className='text-sm font-bold text-gray-900'>{request.service}</p>
-                            </div>
-                        </div>
-
-                        <div className='flex items-start gap-3'>
-                            <Phone size={16} className='text-amber-500 mt-0.5 shrink-0' />
-                            <div>
-                                <p className='text-xs text-gray-400'>Phone</p>
-                                <p className='text-sm font-bold text-gray-900'>{request.phone}</p>
+                                <p className='text-sm font-bold text-gray-900'>{enquiry.name}</p>
                             </div>
                         </div>
 
@@ -67,15 +42,39 @@ const RequestDetailModal = ({ request, onClose, onStatusChange }) => {
                             <Mail size={16} className='text-amber-500 mt-0.5 shrink-0' />
                             <div>
                                 <p className='text-xs text-gray-400'>Email</p>
-                                <p className='text-sm font-bold text-gray-900 break-all'>{request.email}</p>
+                                <p className='text-sm font-bold text-gray-900 break-all'>{enquiry.email}</p>
+                            </div>
+                        </div>
+
+                        <div className='flex items-start gap-3'>
+                            <Phone size={16} className='text-amber-500 mt-0.5 shrink-0' />
+                            <div>
+                                <p className='text-xs text-gray-400'>Phone</p>
+                                <p className='text-sm font-bold text-gray-900'>{enquiry.phone}</p>
+                            </div>
+                        </div>
+
+                        <div className='flex items-start gap-3'>
+                            <FileText size={16} className='text-amber-500 mt-0.5 shrink-0' />
+                            <div>
+                                <p className='text-xs text-gray-400'>Subject</p>
+                                <p className='text-sm font-bold text-gray-900'>{enquiry.subject}</p>
+                            </div>
+                        </div>
+
+                        <div className='flex items-start gap-3'>
+                            <MessageSquare size={16} className='text-amber-500 mt-0.5 shrink-0' />
+                            <div>
+                                <p className='text-xs text-gray-400'>Message</p>
+                                <p className='text-sm font-semibold text-gray-700 leading-relaxed'>{enquiry.message}</p>
                             </div>
                         </div>
 
                         <div className='flex items-start gap-3'>
                             <Calendar size={16} className='text-amber-500 mt-0.5 shrink-0' />
                             <div>
-                                <p className='text-xs text-gray-400'>Date Submitted</p>
-                                <p className='text-sm font-bold text-gray-900'>{request.date}</p>
+                                <p className='text-xs text-gray-400'>Received On</p>
+                                <p className='text-sm font-bold text-gray-900'>{enquiry.date}</p>
                             </div>
                         </div>
                     </div>
@@ -87,7 +86,7 @@ const RequestDetailModal = ({ request, onClose, onStatusChange }) => {
                             onChange={(e) => setStatus(e.target.value)}
                             className='w-full px-3 py-2 text-sm font-semibold border border-gray-200 rounded-lg outline-none focus:border-amber-400 transition-colors duration-300 bg-white'
                         >
-                            {statusOptions.filter((s) => s !== 'All').map((s) => (
+                            {enquiryStatusOptions.filter((s) => s !== 'All').map((s) => (
                                 <option key={s} value={s}>{s}</option>
                             ))}
                         </select>
@@ -113,4 +112,4 @@ const RequestDetailModal = ({ request, onClose, onStatusChange }) => {
     )
 }
 
-export default RequestDetailModal
+export default EnquiryDetailModal

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const CTASection = () => {
     const navigate = useNavigate();
     return (
-        <section className='w-full bg-neutral-50 px-4 py-6'>
+        <section className='w-full bg-neutral-50 px-4 py-16 md:py-24'>
             <div className='max-w-6xl mx-auto relative bg-black rounded-3xl overflow-hidden px-8 py-12 md:py-16 text-center'>
 
                 {/* Decorative corner accents */}

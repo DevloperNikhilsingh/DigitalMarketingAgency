@@ -17,11 +17,11 @@ const PortfolioSection = () => {
 
                 {/* Heading */}
                 <div className='text-center mb-10'>
-                    <span className='inline-block bg-indigo-50 text-indigo-600 text-xs font-bold tracking-widest px-4 py-1.5 rounded-full mb-4'>
-                        RESULTS THAT MATTER
+                    <span className='inline-block border border-yellow-400 text-yellow-500 text-xs font-bold tracking-widest px-4 py-1.5 rounded-full mb-4'>
+                        RESULT THAT MATTER
                     </span>
                     <h2 className='text-4xl md:text-5xl font-extrabold text-gray-900'>
-                        Work That <span className='text-purple-600'>Speaks</span> For Itself
+                        Work That <span className='text-amber-400'>Speaks</span> For Itself
                     </h2>
                     <p className='text-gray-500 text-base mt-3'>
                         A glimpse of <span className='text-blue-600 font-semibold'>results</span> we've delivered.
