@@ -9,7 +9,7 @@ const NotificationToggle = ({ label, desc, checked, onToggle }) => (
         <button
             onClick={onToggle}
             className={`w-11 h-6 rounded-full relative transition-colors duration-300 shrink-0
-                ${checked ? 'bg-amber-400' : 'bg-gray-200'}`}
+                ${checked ? 'bg-amber-400' : 'bg-black'}`}
         >
             <span
                 className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-300
