@@ -1,9 +1,24 @@
 import React from 'react'
 import { MessageCircle, Phone, Mail, MapPin, Sparkles } from 'lucide-react'
 import { FaFacebook, FaXTwitter, FaWhatsapp } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 
-const quickLinks = ['Home', 'Services', 'About Us', 'Portfolio', 'Contact Us']
-const services = ['SEO', 'Social Media Marketing', 'Google Ads', 'Content Marketing', 'Email Marketing']
+const quickLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/service' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Contact Us', path: '/contact' },
+]
+
+const services = [
+    { name: 'SEO', path: '/services/seo' },
+    { name: 'Social Media Marketing', path: '/services/social-media-marketing' },
+    { name: 'Google Ads', path: '/services/google-ads' },
+    { name: 'Content Marketing', path: '/services/content-marketing' },
+    { name: 'Email Marketing', path: '/services/email-marketing' },
+    { name: 'All Services', path: '/service' },
+]
 
 const Footer = () => {
     return (
@@ -35,32 +50,38 @@ const Footer = () => {
                     </div>
 
                     {/* Quick Links */}
-                    <div>
-                        <h4 className='text-white font-bold text-sm mb-5'>Quick Links</h4>
-                        <ul className='flex flex-col gap-3'>
-                            {quickLinks.map((link) => (
-                                <li key={link}>
-                                    <a href='#' className='text-gray-400 text-sm transition-colors duration-300 hover:text-yellow-400'>
-                                        {link}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+<div>
+    <h4 className='text-white font-bold text-sm mb-5'>Quick Links</h4>
+    <ul className='flex flex-col gap-3'>
+        {quickLinks.map((link) => (
+            <li key={link.name}>
+                <Link
+                    to={link.path}
+                    className='text-gray-400 text-sm transition-colors duration-300 hover:text-yellow-400'
+                >
+                    {link.name}
+                </Link>
+            </li>
+        ))}
+    </ul>
+</div>
 
-                    {/* Services */}
-                    <div>
-                        <h4 className='text-white font-bold text-sm mb-5'>Services</h4>
-                        <ul className='flex flex-col gap-3'>
-                            {services.map((service) => (
-                                <li key={service}>
-                                    <a href='#' className='text-gray-400 text-sm transition-colors duration-300 hover:text-yellow-400'>
-                                        {service}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+{/* Services */}
+<div>
+    <h4 className='text-white font-bold text-sm mb-5'>Services</h4>
+    <ul className='flex flex-col gap-3'>
+        {services.map((service) => (
+            <li key={service.name}>
+                <Link
+                    to={service.path}
+                    className='text-gray-400 text-sm transition-colors duration-300 hover:text-yellow-400'
+                >
+                    {service.name}
+                </Link>
+            </li>
+        ))}
+    </ul>
+</div>
 
                     {/* Contact */}
                     <div>

@@ -13,9 +13,8 @@ const stats = [
 // Animates a number from 0 -> target whenever it scrolls into view
 const Counter = ({ target, suffix }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
   const [value, setValue] = useState(0);
- 
 
   useEffect(() => {
     if (!isInView) return;

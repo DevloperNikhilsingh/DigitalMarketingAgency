@@ -1,15 +1,91 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Play, Users } from 'lucide-react'
 
 const stats = [
-    { icon: Users, value: '250+', label: 'Happy Clients' },
-    { icon: Users, value: '500+', label: 'Projects Completed' },
-    { icon: Users, value: '98%', label: 'Client Satisfaction' },
-    { icon: Users, value: '10+', label: 'Years of Experience' },
+    { icon: Users, value: 250, suffix: '+', label: 'Happy Clients' },
+    { icon: Users, value: 500, suffix: '+', label: 'Projects Completed' },
+    { icon: Users, value: 98, suffix: '%', label: 'Client Satisfaction' },
+    { icon: Users, value: 10, suffix: '+', label: 'Years of Experience' },
 ]
 
+const useCountUp = (end, start, duration = 1500) => {
+    const [count, setCount] = useState(0)
+    const hasRun = useRef(false)
+
+    useEffect(() => {
+        if (!start || hasRun.current) return
+        hasRun.current = true
+
+        let startTime = null
+        let rafId
+
+        const step = (timestamp) => {
+            if (!startTime) startTime = timestamp
+            const progress = Math.min((timestamp - startTime) / duration, 1)
+            setCount(Math.floor(progress * end))
+            if (progress < 1) {
+                rafId = requestAnimationFrame(step)
+            } else {
+                setCount(end)
+            }
+        }
+
+        rafId = requestAnimationFrame(step)
+        return () => cancelAnimationFrame(rafId)
+    }, [end, start, duration])
+
+    return count
+}
+
+const StatItem = ({ stat, start }) => {
+    const Icon = stat.icon
+    const count = useCountUp(stat.value, start)
+
+    return (
+        <div className='text-center'>
+            <div className='w-11 h-11 rounded-full bg-white/5 border border-yellow-400/30 flex items-center justify-center mx-auto mb-3'>
+                <Icon className='text-yellow-400' size={18} />
+            </div>
+            <p className='text-white text-xl font-extrabold'>{count}{stat.suffix}</p>
+            <p className='text-gray-400 text-xs mt-1'>{stat.label}</p>
+            <div className='w-6 h-0.5 bg-yellow-400 mx-auto mt-2'></div>
+        </div>
+    )
+}
+
 const AboutHero = () => {
+    const statsRef = useRef(null)
+    const [startCount, setStartCount] = useState(false)
+
+    useEffect(() => {
+        const node = statsRef.current
+        if (!node) return
+
+        // Fallback for browsers/environments without IntersectionObserver
+        if (typeof IntersectionObserver === 'undefined') {
+            setStartCount(true)
+            return
+        }
+
+        let triggered = false
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !triggered) {
+                        triggered = true
+                        setStartCount(true)
+                        observer.unobserve(node)
+                    }
+                })
+            },
+            { threshold: 0.15 }
+        )
+
+        observer.observe(node)
+        return () => observer.disconnect()
+    }, [])
+
     return (
         <div className='relative bg-black pt-14 pb-32 px-4 md:px-6 overflow-hidden'>
             <div className='max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10'>
@@ -58,21 +134,14 @@ const AboutHero = () => {
             </div>
 
             {/* Stats bar */}
-            <div className='max-w-5xl mx-auto relative z-20 -mb-20 mt-12 bg-neutral-900 border border-white/10 rounded-2xl shadow-2xl
-                grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-10 py-8'>
-                {stats.map((stat) => {
-                    const Icon = stat.icon
-                    return (
-                        <div key={stat.label} className='text-center'>
-                            <div className='w-11 h-11 rounded-full bg-white/5 border border-yellow-400/30 flex items-center justify-center mx-auto mb-3'>
-                                <Icon className='text-yellow-400' size={18} />
-                            </div>
-                            <p className='text-white text-xl font-extrabold'>{stat.value}</p>
-                            <p className='text-gray-400 text-xs mt-1'>{stat.label}</p>
-                            <div className='w-6 h-0.5 bg-yellow-400 mx-auto mt-2'></div>
-                        </div>
-                    )
-                })}
+            <div
+                ref={statsRef}
+                className='max-w-5xl mx-auto relative z-20 -mb-20 mt-12 bg-neutral-900 border border-white/10 rounded-2xl shadow-2xl
+                grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-10 py-8'
+            >
+                {stats.map((stat) => (
+                    <StatItem key={stat.label} stat={stat} start={startCount} />
+                ))}
             </div>
         </div>
     )
