@@ -1,15 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import { Users, Rocket, TrendingUp, Trophy, Lightbulb, Shield, BarChart3, Handshake, Heart } from "lucide-react";
 import Footer from "../Component/Layout/Footer ";
 import Navbar from "../Component/Layout/Navbar";
-
-/**
- * AboutPage
- * - Framer Motion: used ONLY for on-load / on-scroll entrance reveals (hero, story, values, CTA)
- * - GSAP: used ONLY for the continuous team carousel loop (infinite marquee, pause on hover)
- * No overlap: each library owns a distinct animation responsibility.
- */
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -21,18 +15,18 @@ const fadeUp = {
 };
 
 const stats = [
-  { icon: "👥", num: "250+", label: "Happy Clients" },
-  { icon: "🚀", num: "500+", label: "Projects Completed" },
-  { icon: "📈", num: "98%", label: "Client Satisfaction" },
-  { icon: "🏆", num: "10+", label: "Years of Experience" },
+  { icon: Users, num: "250+", label: "Happy Clients" },
+  { icon: Rocket, num: "500+", label: "Projects Completed" },
+  { icon: TrendingUp, num: "98%", label: "Client Satisfaction" },
+  { icon: Trophy, num: "10+", label: "Years of Experience" },
 ];
 
 const values = [
-  { icon: "💡", title: "Creativity", desc: "Fresh ideas that make brands stand out." },
-  { icon: "🛡️", title: "Transparency", desc: "Honest communication at every step." },
-  { icon: "📊", title: "Results", desc: "Focused on measurable growth and ROI." },
-  { icon: "🤝", title: "Collaboration", desc: "We grow together with our clients." },
-  { icon: "❤️", title: "Integrity", desc: "We do what's right, always." },
+  { icon: Lightbulb, title: "Creativity", desc: "Fresh ideas that make brands stand out." },
+  { icon: Shield, title: "Transparency", desc: "Honest communication at every step." },
+  { icon: BarChart3, title: "Results", desc: "Focused on measurable growth and ROI." },
+  { icon: Handshake, title: "Collaboration", desc: "We grow together with our clients." },
+  { icon: Heart, title: "Integrity", desc: "We do what's right, always." },
 ];
 
 const team = [
@@ -74,7 +68,7 @@ function TeamCarousel() {
 
   return (
     <div
-      className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_60px,black_calc(100%-60px),transparent)]"
+      className="relative overflow-hidden mask-image:linear-gradient(to_right,transparent,black_60px,black_calc(100%-60px),transparent)"
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
@@ -172,17 +166,20 @@ export default function AboutPage() {
         variants={fadeUp}
         custom={2}
       >
-        {stats.map((s, i) => (
-          <div key={i} className="flex items-center gap-3 flex-1 min-w-32.5 justify-center">
-            <span className="w-9 h-9 rounded-full border border-amber-400 text-amber-400 flex items-center justify-center text-sm shrink-0">
-              {s.icon}
-            </span>
-            <div className="text-left">
-              <div className="text-white text-lg font-extrabold leading-tight">{s.num}</div>
-              <div className="text-gray-400 text-[11px] mt-0.5">{s.label}</div>
-            </div>
-          </div>
-        ))}
+        {stats.map((s, i) => {
+  const Icon = s.icon;
+  return (
+    <div key={i} className="flex items-center gap-3 flex-1 min-w-32.5 justify-center">
+      <span className="w-9 h-9 rounded-full border border-amber-400 text-amber-400 flex items-center justify-center text-sm shrink-0">
+        <Icon size={16} />
+      </span>
+      <div className="text-left">
+        <div className="text-white text-lg font-extrabold leading-tight">{s.num}</div>
+        <div className="text-gray-400 text-[11px] mt-0.5">{s.label}</div>
+      </div>
+    </div>
+  );
+})}
       </motion.div>
 
       {/* OUR STORY */}
@@ -275,23 +272,26 @@ export default function AboutPage() {
           The Principles That <span className="text-amber-400">Drive Us</span>
         </motion.h2>
         <div className="flex flex-wrap justify-between gap-8 max-w-6xl mx-auto">
-          {values.map((v, i) => (
-            <motion.div
-              key={v.title}
-              className="flex-1 min-w-32.5"
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              custom={i}
-            >
-              <div className="w-14 h-14 rounded-full border border-[#333] text-amber-400 flex items-center justify-center mx-auto mb-4 text-xl">
-                {v.icon}
-              </div>
-              <h4 className="text-base font-semibold mb-2">{v.title}</h4>
-              <p className="text-xs text-gray-400 leading-relaxed max-w-42.5 mx-auto">{v.desc}</p>
-            </motion.div>
-          ))}
+          {values.map((v, i) => {
+  const Icon = v.icon;
+  return (
+    <motion.div
+      key={v.title}
+      className="flex-1 min-w-32.5"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={fadeUp}
+      custom={i}
+    >
+      <div className="w-14 h-14 rounded-full border border-[#333] text-amber-400 flex items-center justify-center mx-auto mb-4 text-xl">
+        <Icon size={22} />
+      </div>
+      <h4 className="text-base font-semibold mb-2">{v.title}</h4>
+      <p className="text-xs text-gray-400 leading-relaxed max-w-42.5 mx-auto">{v.desc}</p>
+    </motion.div>
+  );
+})}
         </div>
       </section>
 
