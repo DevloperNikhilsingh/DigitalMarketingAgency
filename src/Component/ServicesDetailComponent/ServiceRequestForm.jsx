@@ -38,13 +38,13 @@ const ServiceRequestForm = ({ serviceName }) => {
 
                 {/* Left side */}
                 <div className='order-1 md:order-1 text-center md:text-left'>
-                    <span className='inline-flex items-center gap-2 border border-purple-200 text-purple-600 text-xs font-bold tracking-widest px-4 py-1.5 rounded-full mb-6'>
-                        <span className='w-1.5 h-1.5 rounded-full bg-purple-500'></span>
+                    <span className='inline-flex items-center gap-2 border border-purple-200 text-amber-600 text-xs font-bold tracking-widest px-4 py-1.5 rounded-full mb-6'>
+                        <span className='w-1.5 h-1.5 rounded-full bg-amber-500'></span>
                         LET'S WORK TOGETHER
                     </span>
 
                     <h2 className='text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight'>
-                        Request this <span className='text-purple-600'>service</span>
+                        Request this <span className='text-amber-600'>service</span>
                     </h2>
 
                     <p className='text-gray-500 text-sm mt-4 max-w-xs mx-auto md:mx-0'>
@@ -72,7 +72,7 @@ const ServiceRequestForm = ({ serviceName }) => {
                         </div>
                     </div>
 
-                    <div className='mt-8 inline-flex items-center gap-2 bg-purple-100/60 text-purple-700 text-xs font-medium px-4 py-2 rounded-full'>
+                    <div className='mt-8 inline-flex items-center gap-2 bg-amber-100/60 text-amber-500 text-xs font-medium px-4 py-2 rounded-full'>
                         <ShieldCheck size={14} />
                         We respect your privacy. Your information is safe with us.
                     </div>
@@ -176,7 +176,7 @@ const ServiceRequestForm = ({ serviceName }) => {
                                 Submit request <Send size={16} />
                             </button>
 
-                            <div className='flex items-center justify-between mt-6'>
+                            {/* <div className='flex items-center justify-between mt-6'>
                                 {steps.map((step, i) => (
                                     <React.Fragment key={step}>
                                         <div className='flex flex-col items-center'>
@@ -189,7 +189,7 @@ const ServiceRequestForm = ({ serviceName }) => {
                                         {i < steps.length - 1 && <div className='flex-1 h-px bg-gray-200 mx-2 mb-4'></div>}
                                     </React.Fragment>
                                 ))}
-                            </div>
+                            </div> */}
                         </form>
                     )}
                 </div>

@@ -87,7 +87,7 @@ const PortfolioGallery = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 rounded-full bg-[#14213D] px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-black"
+            className="inline-flex items-center gap-2 rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-black transition-colors duration-300 hover:bg-black hover:text-white"
           >
             View All
             <ArrowRight size={16} />

@@ -5,13 +5,13 @@ const ExampleProjects = ({ examples }) => {
     return (
         <div className='max-w-5xl mx-auto px-4 md:px-6 py-16'>
             <div className='text-center mb-10'>
-                <span className='inline-flex items-center gap-2 text-purple-500 text-xs font-bold tracking-widest mb-4'>
-                    <span className='w-6 h-px bg-purple-300'></span>
+                <span className='inline-flex items-center gap-2 text-amber-500 text-xs font-bold tracking-widest mb-4'>
+                    <span className='w-6 h-px bg-black'></span>
                     OUR WORK
-                    <span className='w-6 h-px bg-purple-300'></span>
+                    <span className='w-6 h-px bg-black'></span>
                 </span>
                 <h2 className='text-3xl md:text-4xl font-extrabold text-gray-900'>
-                    Examples of <span className='text-purple-500'>our work</span>
+                    Examples of <span className='text-amber-500'>our work</span>
                 </h2>
                 <p className='text-gray-400 text-sm mt-2'>
                     Creative strategies. <span className='text-yellow-500 font-semibold'>Real results.</span> Happy clients.

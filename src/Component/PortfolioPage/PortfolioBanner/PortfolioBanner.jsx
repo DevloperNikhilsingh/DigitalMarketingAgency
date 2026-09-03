@@ -47,7 +47,7 @@ const PortfolioBanner = () => {
 
           <div className="mt-8">
             <a
-              href="#contact"
+              href="/contact"
               className="group inline-flex items-center gap-2 rounded-full bg-[#F5A623] px-6 py-3 text-sm font-semibold text-black transition-transform duration-300 hover:-translate-y-0.5"
             >
               Let's Work Together
@@ -72,7 +72,7 @@ const PortfolioBanner = () => {
             ))}
           </div>
         </motion.div>
-
+ 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}

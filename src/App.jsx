@@ -17,6 +17,8 @@ import AdminSettings from './Pages/AdminSetting'
 import AdminNewServices from './Pages/AdminNewServices'
 import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute'
 import AdminEnquiries from './Pages/AdminEnquiries'
+import HomeDashboard from './Component/EmployeeDashboard/Common/HomeDashboard'
+import ServiceRequests from './Component/EmployeeDashboard/ServiceRequestMenu/ServiceRequests'
 
 function App() {
   return (
@@ -54,7 +56,10 @@ function App() {
         } />
 
         <Route path='/employer/dashboard' element={
-          <ProtectedRoute role='employer'><EmployerDashboard /></ProtectedRoute>
+          <ProtectedRoute role='employer'><HomeDashboard /></ProtectedRoute>
+        } />
+        <Route path='/employer/dashboard/servicerequest' element={
+          <ProtectedRoute><ServiceRequests /></ProtectedRoute>
         } />
       </Routes>
     </BrowserRouter>
