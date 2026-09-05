@@ -27,8 +27,8 @@ const MapSection = () => {
         className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100"
       >
         <iframe
-          title="Digitalignite Solutions location map"
-          src="https://www.google.com/maps?q=Sector+62,+Noida,+Uttar+Pradesh+201301&output=embed"
+          title="DigiServices location map"
+          src="https://www.google.com/maps?q=15/46+A-R+Shivpur+Bypass+Shuddhipur+Tarna+Varanasi+Uttar+Pradesh&output=embed"
           className="w-full h-[380px] md:h-[440px] grayscale-[10%]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
@@ -43,10 +43,10 @@ const MapSection = () => {
           className="absolute top-6 left-6 max-w-[260px] bg-white/95 backdrop-blur-sm rounded-xl shadow-xl p-5"
         >
           <p className="font-bold text-[#14213D]">
-            Digitalignite Solutions Pvt. Ltd.
+            DigiServices Marketing Agency
           </p>
           <p className="text-sm text-gray-500 mt-2 leading-relaxed">
-            123, Digital Street, Sector 62, Noida, Uttar Pradesh - 201301
+            15/46 A-R, Shivpur Bypass, Near Tomer Children School, Shuddhipur Tarna, Varanasi, Uttar Pradesh
           </p>
           <div className="flex items-center gap-1.5 mt-3">
             <span className="text-sm font-semibold text-[#14213D]">4.8</span>
@@ -58,7 +58,7 @@ const MapSection = () => {
             <span className="text-xs text-gray-400">(120)</span>
           </div>
           <a
-            href="https://www.google.com/maps?q=Sector+62,+Noida,+Uttar+Pradesh+201301"
+            href="https://www.google.com/maps?q=15/46+A-R+Shivpur+Bypass+Shuddhipur+Tarna+Varanasi+Uttar+Pradesh"
             target="_blank"
             rel="noreferrer"
             className="inline-block text-[#F5A623] text-sm font-semibold mt-3 hover:underline"

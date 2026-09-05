@@ -20,6 +20,15 @@ const services = [
     { name: 'All Services', path: '/service' },
 ]
 
+const whatsappMessage = "Hello Sir! I would like to know more about your digital marketing services. Please share more details.";
+
+const socialLinks = [
+    { Icon: FaFacebook, href: 'https://facebook.com/yourpage' },
+    { Icon: FaXTwitter, href: 'https://twitter.com/yourpage' },
+    { Icon: FaWhatsapp, href: `https://wa.me/917007314944?text=${encodeURIComponent(whatsappMessage)}` },
+    { Icon: MessageCircle, href: '/contact' },
+]
+
 const Footer = () => {
     return (
         <footer className='w-full bg-black pt-14 pb-6 px-4'>
@@ -36,12 +45,14 @@ const Footer = () => {
                             We help brands grow with smart digital marketing strategies.
                         </p>
                         <div className='flex items-center gap-3'>
-                          {[FaFacebook, FaXTwitter, FaWhatsapp, MessageCircle].map((Icon, i) => (
+                            {socialLinks.map(({ Icon, href }, i) => (
                                 <a
                                     key={i}
-                                    href='#'
+                                    href={href}
+                                    target='_blank'
+                                    rel='noopener noreferrer'
                                     className='w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center
-                                        transition-all duration-300 ease-out hover:bg-yellow-400 hover:-translate-y-1'
+                transition-all duration-300 ease-out hover:bg-yellow-400 hover:-translate-y-1'
                                 >
                                     <Icon className='text-white transition-colors duration-300 hover:text-black' size={15} />
                                 </a>
@@ -50,54 +61,56 @@ const Footer = () => {
                     </div>
 
                     {/* Quick Links */}
-<div>
-    <h4 className='text-white font-bold text-sm mb-5'>Quick Links</h4>
-    <ul className='flex flex-col gap-3'>
-        {quickLinks.map((link) => (
-            <li key={link.name}>
-                <Link
-                    to={link.path}
-                    className='text-gray-400 text-sm transition-colors duration-300 hover:text-yellow-400'
-                >
-                    {link.name}
-                </Link>
-            </li>
-        ))}
-    </ul>
-</div>
+                    <div>
+                        <h4 className='text-white font-bold text-sm mb-5'>Quick Links</h4>
+                        <ul className='flex flex-col gap-3'>
+                            {quickLinks.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        to={link.path}
+                                        className='text-gray-400 text-sm transition-colors duration-300 hover:text-yellow-400'
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
-{/* Services */}
-<div>
-    <h4 className='text-white font-bold text-sm mb-5'>Services</h4>
-    <ul className='flex flex-col gap-3'>
-        {services.map((service) => (
-            <li key={service.name}>
-                <Link
-                    to={service.path}
-                    className='text-gray-400 text-sm transition-colors duration-300 hover:text-yellow-400'
-                >
-                    {service.name}
-                </Link>
-            </li>
-        ))}
-    </ul>
-</div>
+                    {/* Services */}
+                    <div>
+                        <h4 className='text-white font-bold text-sm mb-5'>Services</h4>
+                        <ul className='flex flex-col gap-3'>
+                            {services.map((service) => (
+                                <li key={service.name}>
+                                    <Link
+                                        to={service.path}
+                                        className='text-gray-400 text-sm transition-colors duration-300 hover:text-yellow-400'
+                                    >
+                                        {service.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
                     {/* Contact */}
                     <div>
                         <h4 className='text-white font-bold text-sm mb-5'>Contact Us</h4>
                         <ul className='flex flex-col gap-4'>
-                            <li className='flex items-center gap-2 text-gray-400 text-sm'>
-                                <Phone className='text-yellow-400 shrink-0' size={15} />
-                                +91 9876543210
-                            </li>
+                            <a href="tel:+917007314944">
+                                <li className='flex items-center gap-2 text-gray-400 text-sm'>
+                                    <Phone className='text-yellow-400 shrink-0' size={15} />
+                                    +91 7007314944
+                                </li>
+                            </a>
                             <li className='flex items-center gap-2 text-gray-400 text-sm'>
                                 <Mail className='text-yellow-400 shrink-0' size={15} />
-                                hello@digiservices.com
+                                amerjeet13vns@gmail.com
                             </li>
                             <li className='flex items-start gap-2 text-gray-400 text-sm'>
                                 <MapPin className='text-yellow-400 shrink-0 mt-0.5' size={15} />
-                                123, Digital Street, Mohali, India
+                                15/46 A-R, Shivpur Bypass, Near Tomer Children School, Shuddhipur Tarna, Varanasi, UP
                             </li>
                         </ul>
                     </div>

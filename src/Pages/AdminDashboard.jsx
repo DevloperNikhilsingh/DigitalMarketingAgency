@@ -16,7 +16,7 @@ const AdminDashboard = () => {
 
     <main className='flex-1 p-4 md:p-6 flex flex-col gap-5 md:gap-6 w-full min-w-0'>
                 <div className='bg-white border border-yellow-300 rounded-2xl p-5 flex items-center gap-4'>
-                    <div className='w-11 h-11 rounded-full bg-yellow-50 flex items-center justify-center text-2xl flex-shrink-0'>
+                    <div className='w-11 h-11 rounded-full bg-yellow-50 flex items-center justify-center text-2xl shrink-0'>
                         👋
                     </div>
                     <div>

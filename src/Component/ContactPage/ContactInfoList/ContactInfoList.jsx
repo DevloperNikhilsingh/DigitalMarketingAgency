@@ -5,23 +5,27 @@ const contactItems = [
   {
     icon: Phone,
     title: "Call Us",
-    lines: ["+91 9876543210", "Mon - Sat: 10AM - 7PM"],
+    lines: ["+91 7007314944", "Mon - Sat: 10AM - 7PM"],
+    href: "tel:+917007314944",
   },
   {
     icon: Mail,
     title: "Email Us",
-    lines: ["hello@digitalignite.com", "We reply within 24 hours"],
+    lines: ["amerjeet13vns@gmail.com", "We reply within 24 hours"],
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=amerjeet13vns@gmail.com",
   },
   {
     icon: MapPin,
     title: "Visit Us",
-    lines: ["123, Digital Street, Sector 62,", "Noida, Uttar Pradesh - 201301"],
+    lines: ["15/46 A-R, Shivpur Bypass, Near Tomer Children School,", "Shuddhipur Tarna, Varanasi, Uttar Pradesh"],
+    href: "https://www.google.com/maps/search/?api=1&query=15%2F46+A-R+Shivpur+Bypass+Shuddhipur+Tarna+Varanasi",
   },
   {
     icon: CalendarClock,
     title: "Schedule a Meeting",
     lines: ["Book a free consultation with our expert"],
     link: "Book Now",
+    href: "/contact",
   },
 ];
 
@@ -75,15 +79,17 @@ const ContactInfoList = () => {
         viewport={{ once: true }}
         className="grid sm:grid-cols-2 gap-4"
       >
-        {contactItems.map(({ icon: Icon, title, lines, link }) => (
-          <motion.div
+        {contactItems.map(({ icon: Icon, title, lines, link, href }) => (
+          <motion.a
             key={title}
+            href={href}
+            target={href?.startsWith("http") ? "_blank" : undefined}
+            rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
             variants={cardVariants}
             whileHover={{ y: -5 }}
-            className="group relative rounded-2xl p-[1.5px] bg-linear-to-br from-gray-200 via-gray-200 to-gray-200 hover:from-[#F5A623]/60 hover:to-[#14213D]/20 transition-colors duration-300"
+            className="group relative rounded-2xl p-[1.5px] bg-linear-to-br from-gray-200 via-gray-200 to-gray-200 hover:from-[#F5A623]/60 hover:to-[#14213D]/20 transition-colors duration-300 block"
           >
             <div className="relative h-full rounded-2xl bg-white p-5 overflow-hidden">
-              {/* soft glow that appears on hover */}
               <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-[#F5A623]/0 group-hover:bg-[#F5A623]/10 blur-xl transition-colors duration-300" />
 
               <div className="relative flex items-center justify-between mb-4">
@@ -100,12 +106,12 @@ const ContactInfoList = () => {
                 </p>
               ))}
               {link && (
-                <span className="relative inline-block text-[#F5A623] text-sm font-semibold mt-2 cursor-pointer group-hover:underline">
+                <span className="relative inline-block text-[#F5A623] text-sm font-semibold mt-2 group-hover:underline">
                   {link}
                 </span>
               )}
             </div>
-          </motion.div>
+          </motion.a>
         ))}
       </motion.div>
     </div>

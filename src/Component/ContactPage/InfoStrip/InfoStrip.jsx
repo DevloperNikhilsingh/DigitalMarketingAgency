@@ -18,7 +18,8 @@ const stripItems = [
     icon: Headphones,
     title: "Quick Support",
     text: "Have a question? We are here to help!",
-    link: "+91 9876543210",
+    link: "+91 7007314944",
+    href: "tel:+917007314944",
   },
   {
     icon: MessageSquare,
@@ -48,7 +49,7 @@ const InfoStrip = () => {
         viewport={{ once: true }}
         className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
       >
-        {stripItems.map(({ icon: Icon, title, text, sub, link }) => (
+        {stripItems.map(({ icon: Icon, title, text, sub, link, href }) => (
           <motion.div
             key={title}
             variants={cardVariants}
@@ -70,9 +71,18 @@ const InfoStrip = () => {
               <p className="relative text-sm text-gray-500 leading-relaxed">{text}</p>
               {sub && <p className="relative text-sm font-medium text-[#14213D] mt-1">{sub}</p>}
               {link && (
-                <span className="relative inline-block text-[#F5A623] text-sm font-semibold mt-3 cursor-pointer group-hover:underline">
-                  {link}
-                </span>
+                href ? (
+                  <a
+                    href={href}
+                    className="relative inline-block text-[#F5A623] text-sm font-semibold mt-3 hover:underline"
+                  >
+                    {link}
+                  </a>
+                ) : (
+                  <span className="relative inline-block text-[#F5A623] text-sm font-semibold mt-3 cursor-pointer group-hover:underline">
+                    {link}
+                  </span>
+                )
               )}
             </div>
           </motion.div>
