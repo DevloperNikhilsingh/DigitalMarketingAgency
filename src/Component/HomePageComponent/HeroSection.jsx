@@ -44,7 +44,7 @@ const HeroSection = () => {
 
     return (
         <section className='relative w-full bg-black overflow-hidden'>
-            <div className='max-w-7xl mx-auto px-4 md:px-6 pt-16 pb-10 md:pt-20 md:pb-0 grid md:grid-cols-2 gap-10 items-center relative z-10'>
+            <div className='max-w-7xl mx-auto px-4 md:px-6 pt-6 pb-8 md:pt-8 md:pb-0 grid md:grid-cols-2 gap-4 md:gap-10 md:items-start lg:items-center relative z-10'>
 
                 {/* Left content */}
                 <div className='order-2 md:order-1'>
@@ -59,7 +59,9 @@ const HeroSection = () => {
                     </p>
 
                     <div className='flex flex-wrap gap-4 mt-8'>
-                        <button className='flex items-center gap-2 bg-yellow-400 text-black font-bold text-sm px-6 py-3 rounded-md shadow-md
+                        <button
+                        onClick={() => navigate("/contact")}
+                        className='flex items-center gap-2 bg-yellow-400 text-black font-bold text-sm px-6 py-3 rounded-md shadow-md
                             transition-all duration-300 ease-out hover:bg-yellow-300 hover:-translate-y-1 hover:shadow-yellow-400/50 hover:shadow-xl active:scale-90 active:translate-y-0'>
                             Get Started <ArrowRight size={16} className='transition-transform duration-300 group-hover:translate-x-1' />
                         </button>
@@ -73,7 +75,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Right image */}
-                <div className='order-1 md:order-2 relative flex justify-center items-end h-95 sm:h-110 md:h-130'>
+                <div className='order-1 md:order-2 relative flex justify-center items-end h-64 xs:h-72 sm:h-110 md:h-100 lg:h-130'>
                     <div className='hidden md:block absolute w-105 h-105 border border-dashed border-yellow-400/20 rounded-full animate-[spin_25s_linear_infinite]'></div>
 
                     <div className='hidden md:flex absolute left-2 top-16 w-11 h-11 rounded-full bg-white/5 border border-white/10 items-center justify-center backdrop-blur-sm animate-bounce z-20'>

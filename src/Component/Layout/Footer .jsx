@@ -31,9 +31,9 @@ const socialLinks = [
 
 const Footer = () => {
     return (
-        <footer className='w-full bg-black pt-14 pb-6 px-4'>
+        <footer className='w-full bg-black pt-10 md:pt-14 pb-6 px-4'>
             <div className='max-w-6xl mx-auto'>
-                <div className='grid md:grid-cols-4 gap-10 pb-10 border-b border-white/10'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 pb-10 border-b border-white/10'>
 
                     {/* Brand */}
                     <div>
@@ -51,7 +51,7 @@ const Footer = () => {
                                     href={href}
                                     target='_blank'
                                     rel='noopener noreferrer'
-                                    className='w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center
+                                    className='w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0
                 transition-all duration-300 ease-out hover:bg-yellow-400 hover:-translate-y-1'
                                 >
                                     <Icon className='text-white transition-colors duration-300 hover:text-black' size={15} />
@@ -95,18 +95,20 @@ const Footer = () => {
                     </div>
 
                     {/* Contact */}
-                    <div>
+                    <div className='sm:col-span-2 md:col-span-1'>
                         <h4 className='text-white font-bold text-sm mb-5'>Contact Us</h4>
                         <ul className='flex flex-col gap-4'>
-                            <a href="tel:+917007314944">
-                                <li className='flex items-center gap-2 text-gray-400 text-sm'>
+                            <li>
+                                <a href="tel:+917007314944" className='flex items-center gap-2 text-gray-400 text-sm hover:text-yellow-400 transition-colors duration-300'>
                                     <Phone className='text-yellow-400 shrink-0' size={15} />
                                     +91 7007314944
-                                </li>
-                            </a>
-                            <li className='flex items-center gap-2 text-gray-400 text-sm'>
-                                <Mail className='text-yellow-400 shrink-0' size={15} />
-                                amerjeet13vns@gmail.com
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:amerjeet13vns@gmail.com" className='flex items-center gap-2 text-gray-400 text-sm hover:text-yellow-400 transition-colors duration-300 break-all'>
+                                    <Mail className='text-yellow-400 shrink-0' size={15} />
+                                    amerjeet13vns@gmail.com
+                                </a>
                             </li>
                             <li className='flex items-start gap-2 text-gray-400 text-sm'>
                                 <MapPin className='text-yellow-400 shrink-0 mt-0.5' size={15} />

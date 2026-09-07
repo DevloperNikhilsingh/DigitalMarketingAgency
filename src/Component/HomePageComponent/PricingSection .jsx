@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { Check } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useNavigate } from 'react-router-dom'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -32,6 +33,7 @@ const plans = [
 const PricingSection = () => {
     const sectionRef = useRef(null)
     const cardRefs = useRef([])
+    const navigate = useNavigate();
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -111,7 +113,9 @@ const PricingSection = () => {
                                 ))}
                             </ul>
 
-                            <button className='w-full bg-yellow-400 text-black font-bold text-sm py-3 rounded-md
+                            <button
+                            onClick={() => navigate("/contact")}
+                            className='w-full bg-yellow-400 text-black font-bold text-sm py-3 rounded-md
                                 transition-all duration-300 ease-out hover:bg-yellow-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow-400/40 active:scale-95'>
                                 Get Started
                             </button>

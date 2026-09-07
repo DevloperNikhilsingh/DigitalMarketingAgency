@@ -10,13 +10,13 @@ import CTASection from "../Component/HomePageComponent/CTASection";
 
 const Contact = () => {
   return (
-   
+
     <main className="w-full bg-white">
-       <Navbar />
+      <Navbar />
       <HeroBanner />
 
-      <section id="contact-form" className="w-full bg-[#F7F5F2] py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-14">
+      <section id="contact-form" className="w-full bg-[#F7F5F2] py-10 sm:py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 grid md:grid-cols-2 gap-10 md:gap-14">
           <ContactInfoList />
           <ContactForm />
         </div>

@@ -93,8 +93,8 @@ const ContactForm = () => {
   };
 
   return (
-    <div id="contact-form" className="relative rounded-3xl p-[1.5px] bg-linear-to-br from-[#F5A623]/50 via-gray-200 to-[#14213D]/20">
-      <div className="rounded-3xl bg-white px-7 py-9 md:px-9 md:py-10 shadow-xl shadow-black/4">
+    <div id="contact-form" className="relative rounded-2xl sm:rounded-3xl p-[1.5px] bg-linear-to-br from-[#F5A623]/50 via-gray-200 to-[#14213D]/20">
+      <div className="rounded-2xl sm:rounded-3xl bg-white px-5 py-7 sm:px-7 sm:py-9 md:px-9 md:py-10 shadow-xl shadow-black/4">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +110,7 @@ const ContactForm = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.05 }}
-          className="text-2xl md:text-[28px] font-bold text-[#14213D] mb-2"
+          className="text-xl sm:text-2xl md:text-[28px] font-bold text-[#14213D] mb-2"
         >
           Send Us a Message
         </motion.h2>
@@ -125,8 +125,8 @@ const ContactForm = () => {
           Fill out the form and our team will get back to you as soon as possible.
         </motion.p>
 
-        <form onSubmit={handleSubmit} className="space-y-7">
-          <div className="grid sm:grid-cols-2 gap-x-6 gap-y-7">
+        <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-7">
+          <div className="grid sm:grid-cols-2 gap-x-6 gap-y-6 sm:gap-y-7">
             <FloatField icon={User} label="Your Name" name="name" value={formData.name} onChange={handleChange} error={errors.name} />
             <FloatField icon={Mail} label="Email Address" name="email" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
             <FloatField icon={Phone} label="Phone Number" name="phone" type="tel" value={formData.phone} onChange={handleChange} />

@@ -29,7 +29,7 @@ const MapSection = () => {
         <iframe
           title="DigiServices location map"
           src="https://www.google.com/maps?q=15/46+A-R+Shivpur+Bypass+Shuddhipur+Tarna+Varanasi+Uttar+Pradesh&output=embed"
-          className="w-full h-[380px] md:h-[440px] grayscale-[10%]"
+          className="w-full h-95 md:h-110 grayscale-10"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
@@ -40,7 +40,7 @@ const MapSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="absolute top-6 left-6 max-w-[260px] bg-white/95 backdrop-blur-sm rounded-xl shadow-xl p-5"
+          className="absolute top-6 left-6 max-w-65 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl p-5"
         >
           <p className="font-bold text-[#14213D]">
             DigiServices Marketing Agency

@@ -57,7 +57,7 @@ const ContactInfoList = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.05 }}
-        className="text-2xl md:text-[28px] font-bold text-[#14213D] mb-2"
+        className="text-xl sm:text-2xl md:text-[28px] font-bold text-[#14213D] mb-2"
       >
         Let&apos;s Talk
       </motion.h2>
@@ -73,12 +73,12 @@ const ContactInfoList = () => {
       </motion.p>
 
       <motion.div
-        variants={gridVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="grid sm:grid-cols-2 gap-4"
-      >
+  variants={gridVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4"
+>
         {contactItems.map(({ icon: Icon, title, lines, link, href }) => (
           <motion.a
             key={title}
@@ -93,7 +93,7 @@ const ContactInfoList = () => {
               <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-[#F5A623]/0 group-hover:bg-[#F5A623]/10 blur-xl transition-colors duration-300" />
 
               <div className="relative flex items-center justify-between mb-4">
-                <div className="w-11 h-11 rounded-xl bg-linear-to-br from-[#14213D] to-[#233255] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-linear-to-br from-[#14213D] to-[#233255] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                   <Icon className="w-5 h-5 text-[#F5A623]" />
                 </div>
                 <ArrowUpRight className="w-4 h-4 text-gray-300 transition-all duration-300 group-hover:text-[#F5A623] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
