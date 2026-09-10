@@ -19,6 +19,8 @@ import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute'
 import AdminEnquiries from './Pages/AdminEnquiries'
 import HomeDashboard from './Component/EmployeeDashboard/Common/HomeDashboard'
 import ServiceRequests from './Component/EmployeeDashboard/ServiceRequestMenu/ServiceRequests'
+import BusinessDetail from './Component/BusinessDetail/BusinessDetail'
+import Listings from './Pages/Listings'
 
 function App() {
   return (
@@ -31,8 +33,10 @@ function App() {
         <Route path='/service' element={ <ServicePage /> } />
         <Route path='/services/:serviceId' element={<ServiceDetailPage />} />
         <Route path='/portfolio' element={<Portfolio />} />
+        <Route path='/listing' element={<Listings />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/business/:businessId' element={<BusinessDetail />} />
 
         <Route path='/admin/dashboard' element={
           <ProtectedRoute role='admin'><AdminDashboard /></ProtectedRoute>

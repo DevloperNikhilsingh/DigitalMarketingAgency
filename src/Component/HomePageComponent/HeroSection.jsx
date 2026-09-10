@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'
-import { ArrowRight, Sparkles, TrendingUp } from 'lucide-react'
+import React, { useEffect, useRef, useState } from 'react'
+import { ArrowRight, Sparkles, TrendingUp, Search, MapPin } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroImage from '../../assets/HeroImage.png'
@@ -18,6 +18,17 @@ const HeroSection = () => {
     const statsRef = useRef(null)
     const numberRefs = useRef([])
     const navigate = useNavigate()
+
+    const [query, setQuery] = useState('')
+    const [locationQuery, setLocationQuery] = useState('')
+
+    const handleSearch = (e) => {
+    e.preventDefault()
+    const params = new URLSearchParams()
+    if (query.trim()) params.set('query', query.trim())
+    if (locationQuery.trim()) params.set('location', locationQuery.trim())
+    navigate(`/listing?${params.toString()}`)
+}
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -44,10 +55,10 @@ const HeroSection = () => {
 
     return (
         <section className='relative w-full bg-black overflow-hidden'>
-            <div className='max-w-7xl mx-auto px-4 md:px-6 pt-6 pb-8 md:pt-8 md:pb-0 grid md:grid-cols-2 gap-4 md:gap-10 md:items-start lg:items-center relative z-10'>
+            <div className='max-w-7xl mx-auto px-4 md:px-6 pt-6 pb-8 md:pt-10 md:pb-4 grid md:grid-cols-2 gap-6 md:gap-10 md:items-start lg:items-center relative z-10'>
 
                 {/* Left content */}
-                <div className='order-2 md:order-1'>
+                <div className='order-2 md:order-1 relative z-30'>
                     <h1 className='text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight'>
                         We Grow Brands <br />
                         <span className='text-yellow-400'>Digitally.</span>
@@ -58,7 +69,44 @@ const HeroSection = () => {
                         businesses grow with data-driven digital marketing.
                     </p>
 
-                    <div className='flex flex-wrap gap-4 mt-8'>
+                    {/* Search bar */}
+                    <form
+                        onSubmit={handleSearch}
+                        className='flex flex-col sm:flex-row gap-2 mt-6 max-w-lg bg-white/5 border border-white/10 rounded-xl p-2 backdrop-blur-sm'
+                    >
+                        <div className='flex items-center gap-2 flex-1 bg-neutral-900/80 rounded-lg px-3 py-2.5'>
+                            <Search size={16} className='text-yellow-400 shrink-0' />
+                            <input
+                                type='text'
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                placeholder='Search gym, restaurant, salon...'
+                                className='bg-transparent outline-none text-sm text-white placeholder:text-gray-500 w-full'
+                            />
+                        </div>
+
+                        <div className='flex items-center gap-2 flex-1 bg-neutral-900/80 rounded-lg px-3 py-2.5'>
+                            <MapPin size={16} className='text-yellow-400 shrink-0' />
+                            <input
+                                type='text'
+                                value={locationQuery}
+                                onChange={(e) => setLocationQuery(e.target.value)}
+                                placeholder='Location e.g. Mahmoorganj, Varanasi'
+                                className='bg-transparent outline-none text-sm text-white placeholder:text-gray-500 w-full'
+                            />
+                        </div>
+
+                        <button
+                            type='submit'
+                            className='flex items-center justify-center gap-1.5 bg-yellow-400 text-black font-bold text-sm px-5 py-2.5 rounded-lg shadow-md
+                                transition-all duration-300 ease-out hover:bg-yellow-300 hover:-translate-y-0.5 active:scale-95'
+                        >
+                            <Search size={15} />
+                            Search
+                        </button>
+                    </form>
+
+                    <div className='flex flex-wrap gap-4 mt-6 mb-4 md:mb-0 relative z-30'>
                         <button
                         onClick={() => navigate("/contact")}
                         className='flex items-center gap-2 bg-yellow-400 text-black font-bold text-sm px-6 py-3 rounded-md shadow-md
@@ -75,7 +123,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Right image */}
-                <div className='order-1 md:order-2 relative flex justify-center items-end h-64 xs:h-72 sm:h-110 md:h-100 lg:h-130'>
+                <div className='order-1 md:order-2 relative flex justify-center items-end h-56 xs:h-64 sm:h-80 md:h-100 lg:h-130'>
                     <div className='hidden md:block absolute w-105 h-105 border border-dashed border-yellow-400/20 rounded-full animate-[spin_25s_linear_infinite]'></div>
 
                     <div className='hidden md:flex absolute left-2 top-16 w-11 h-11 rounded-full bg-white/5 border border-white/10 items-center justify-center backdrop-blur-sm animate-bounce z-20'>

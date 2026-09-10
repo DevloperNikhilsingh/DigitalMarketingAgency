@@ -117,6 +117,7 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
+                
 
                 <p className='text-center text-gray-500 text-xs pt-6'>
                     © 2026 DigiServices Marketing Agency. All rights reserved.

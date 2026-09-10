@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import { BarChart3, FileText, Users, Heart } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import img from '../../../src/assets/WhyChooseUs.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -97,7 +98,7 @@ const WhyChooseUs = () => {
                         className='rounded-2xl overflow-hidden shadow-2xl group'
                     >
                         <img
-                            src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80'
+                            src={img}
                             alt='Team collaborating'
                             className='w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105'
                         />

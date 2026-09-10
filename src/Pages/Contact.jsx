@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import HeroBanner from "../Component/ContactPage/HeroBanner/HeroBanner";
 import ContactForm from "../Component/ContactPage/ContactForm/ContactForm";
 import ContactInfoList from "../Component/ContactPage/ContactInfoList/ContactInfoList";
@@ -9,8 +11,20 @@ import Footer from "../Component/Layout/Footer ";
 import CTASection from "../Component/HomePageComponent/CTASection";
 
 const Contact = () => {
-  return (
+  const location = useLocation();
 
+  useEffect(() => {
+    if (location.hash === "#contact-form") {
+      const el = document.getElementById("contact-form");
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  return (
     <main className="w-full bg-white">
       <Navbar />
       <HeroBanner />
@@ -23,7 +37,6 @@ const Contact = () => {
       </section>
       <MapSection />
       <InfoStrip />
-      {/* <CTABanner /> */}
       <CTASection />
       <Footer />
     </main>

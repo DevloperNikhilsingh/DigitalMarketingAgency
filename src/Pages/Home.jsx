@@ -9,13 +9,15 @@ import PromoBanner from '../Component/HomePageComponent/PromoBanner '
 import PricingSection from '../Component/HomePageComponent/PricingSection '
 import CTASection from '../Component/HomePageComponent/CTASection'
 import Footer from '../Component/Layout/Footer '
+import TopListings from '../Component/TopListings/TopListings'
 
 const HomePage = () => {
   return (
     <>
     <Navbar />
     <HeroSection />
-    <Brand />
+    <TopListings />
+    {/* <Brand /> */}
     <OurServices />
     <WhyChooseUs />
     <PortfolioSection />
