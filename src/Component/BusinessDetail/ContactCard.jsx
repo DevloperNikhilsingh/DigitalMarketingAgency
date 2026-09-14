@@ -12,7 +12,7 @@ export default function ContactCard({ business, onSendEnquiry }) {
 
       <div className="flex flex-col gap-2.5">
         <a
-          href={`tel:${phone}`}
+          href={`tel:${7007314944}`}
           className="flex items-center justify-center gap-2 w-full bg-stone-900 hover:bg-stone-800 text-white text-sm font-semibold py-3 rounded-xl transition"
         >
           <Phone size={16} />
@@ -20,7 +20,7 @@ export default function ContactCard({ business, onSendEnquiry }) {
         </a>
 
         <a
-          href={`https://wa.me/${whatsapp}`}
+          href={`https://wa.me/${7007314944}`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full bg-white hover:bg-stone-50 text-stone-900 text-sm font-semibold py-3 rounded-xl border border-stone-300 transition"
