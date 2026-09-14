@@ -47,7 +47,7 @@ const PortfolioCTA = () => {
           </div>
 
           <a
-            href="#contact"
+            href="/contact"
             className="group relative inline-flex shrink-0 items-center gap-2 overflow-hidden rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
           >
             <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-white/0 via-white/20 to-white/0 transition-transform duration-700 group-hover:translate-x-full" />

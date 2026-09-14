@@ -11,7 +11,7 @@ const filterIcons = {
 
 const PortfolioFilterTabs = ({ filters, activeFilter, onFilterChange }) => {
     return (
-        <div className='flex flex-wrap justify-center gap-3 mb-12'>
+        <div className='flex flex-nowrap overflow-x-auto gap-3 mb-12'>
             {filters.map((filter) => {
                 const Icon = filterIcons[filter]
                 const isActive = activeFilter === filter
@@ -19,9 +19,9 @@ const PortfolioFilterTabs = ({ filters, activeFilter, onFilterChange }) => {
                     <button
                         key={filter}
                         onClick={() => onFilterChange(filter)}
-                        className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold
-                            transition-all duration-300 ease-out active:scale-95
-                            ${isActive
+                        className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap shrink-0
+                        transition-all duration-300 ease-out active:scale-95
+                        ${isActive
                                 ? 'bg-gray-900 text-white shadow-md'
                                 : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300 hover:-translate-y-0.5'
                             }`}

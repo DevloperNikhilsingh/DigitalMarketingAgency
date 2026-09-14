@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MessageCircle, Phone, Mail, MapPin, Sparkles } from 'lucide-react'
 import { FaFacebook, FaXTwitter, FaWhatsapp } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
+import AuthModal from '../Auth/AuthModal'
 
 const quickLinks = [
     { name: 'Home', path: '/' },
@@ -30,6 +31,10 @@ const socialLinks = [
 ]
 
 const Footer = () => {
+
+    const [showloginform, setShowloginform] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <footer className='w-full bg-black pt-10 md:pt-14 pb-6 px-4'>
             <div className='max-w-6xl mx-auto'>
@@ -116,13 +121,29 @@ const Footer = () => {
                             </li>
                         </ul>
                     </div>
+
                 </div>
-                
+                <div className='w-full flex justify-end'>
+                <button
+                onClick={() => setShowloginform(true)}
+                 className='text-xs text-gray-500'>Admin</button>
+                </div>
 
                 <p className='text-center text-gray-500 text-xs pt-6'>
                     © 2026 DigiServices Marketing Agency. All rights reserved.
                 </p>
             </div>
+            
+        {showloginform && (
+             <AuthModal
+        isOpen={showloginform}
+        onClose={() => setShowloginform(false)}
+        // onSubmit={(data) => {
+        //     console.log("Your Business service will upload successfully, please wait for admin approval.", data)
+        // }}
+    />
+        )}
+
         </footer>
     )
 }

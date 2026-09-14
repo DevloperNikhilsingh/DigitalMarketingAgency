@@ -8,8 +8,8 @@ const AuthInput = ({ icon: Icon, ...props }) => {
                 {...props}
                 className='w-full text-sm outline-none bg-transparent'
             />
-        </div>
+        </div>  
     )
 }
 
-export default AuthInput
+export default AuthInput  

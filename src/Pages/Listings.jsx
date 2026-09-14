@@ -5,12 +5,20 @@ import listingData from "../Component/TopListings/listingData";
 import Navbar from "../Component/Layout/Navbar";
 import Footer from "../Component/Layout/Footer ";
 
+const slugify = (text) =>
+  text
+    .toLowerCase()
+    .replace(/&/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
 export default function Listings() {
   const [searchParams] = useSearchParams();
   const query = (searchParams.get("query") || "").trim().toLowerCase();
   const locationQuery = (searchParams.get("location") || "").trim().toLowerCase();
+  const categorySlug = (searchParams.get("category") || "").trim().toLowerCase();
 
-  const hasSearch = query !== "" || locationQuery !== "";
+  const hasSearch = query !== "" || locationQuery !== "" || categorySlug !== "";
 
   const results = listingData.filter((item) => {
     const matchesQuery =
@@ -23,7 +31,16 @@ export default function Listings() {
       item.location.toLowerCase().includes(locationQuery) ||
       (item.area && item.area.toLowerCase().includes(locationQuery));
 
-    return matchesQuery && matchesLocation;
+    
+    const itemCategorySlug = slugify(item.category).replace(/-/g, "").replace(/s$/, "");
+    const urlCategorySlug = categorySlug.replace(/-/g, "").replace(/s$/, "");
+
+    const matchesCategory =
+      categorySlug === "" ||
+      itemCategorySlug.includes(urlCategorySlug) ||
+      urlCategorySlug.includes(itemCategorySlug);
+
+    return matchesQuery && matchesLocation && matchesCategory;
   });
 
   return (
@@ -36,6 +53,7 @@ export default function Listings() {
               {results.length} result{results.length !== 1 ? "s" : ""} found
               {query && <> for "{query}"</>}
               {locationQuery && <> in {locationQuery}</>}
+              {categorySlug && <> in {categorySlug.replace(/-/g, " ")}</>}
             </>
           ) : (
             "All Listings"

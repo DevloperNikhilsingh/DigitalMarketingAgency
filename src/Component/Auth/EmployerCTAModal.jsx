@@ -36,7 +36,7 @@ const EmployerCTAModal = ({ onClose, onAuthRequest }) => {
                     aria-label='Close'
                 >
                     <X size={20} />
-                </button>
+                </button>  
 
                 <div className='w-14 h-14 rounded-full bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-center mx-auto mb-5'>
                     <Rocket className='text-yellow-400' size={24} />

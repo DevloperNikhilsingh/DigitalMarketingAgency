@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '../Component/Layout/Navbar'
 import HeroSection from '../Component/HomePageComponent/HeroSection'
-import Brand from '../Component/HomePageComponent/TrustedBrand'
 import WhyChooseUs from '../Component/HomePageComponent/WhyChooseUs'
 import OurServices from '../Component/HomePageComponent/OurServices'
 import PortfolioSection from '../Component/HomePageComponent/Portfolio'
@@ -10,6 +9,7 @@ import PricingSection from '../Component/HomePageComponent/PricingSection '
 import CTASection from '../Component/HomePageComponent/CTASection'
 import Footer from '../Component/Layout/Footer '
 import TopListings from '../Component/TopListings/TopListings'
+import CategorySection from '../Component/HomePageComponent/Category/CategorySection'
 
 const HomePage = () => {
   return (
@@ -17,7 +17,7 @@ const HomePage = () => {
     <Navbar />
     <HeroSection />
     <TopListings />
-    {/* <Brand /> */}
+    <CategorySection />
     <OurServices />
     <WhyChooseUs />
     <PortfolioSection />

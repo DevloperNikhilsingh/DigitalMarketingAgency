@@ -38,17 +38,17 @@ const listingData = [
       "Full-service hair and beauty salon offering expert styling, coloring and grooming.",
     isNew: true,
   },
-  {
+    {
     id: 4,
-    name: "Serenity Spa & Wellness",
-    category: "Spa",
+    name: "GlowSkin Beauty Clinic",
+    category: "Skin Care Clinic",
     location: "Lucknow, UP",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80",
     rating: 4.9,
     reviewCount: 189,
     verified: true,
     description:
-      "Rejuvenating spa treatments and therapies designed to relax the mind and body.",
+      "Advanced skin care clinic offering dermatologist-led treatments for healthy, glowing skin.",
     isNew: false,
   },
   {

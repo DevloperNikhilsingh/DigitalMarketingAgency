@@ -10,10 +10,10 @@ const collageImages = [
 ];
 
 const stats = [
-  { icon: Layers, value: "250+", label: "Projects" },
+  { icon: Layers, value: "50+", label: "Projects" },
   { icon: Grid3x3, value: "8+", label: "Categories" },
-  { icon: Users, value: "Happy", label: "Clients" },
-  { icon: Sparkles, value: "98%", label: "Satisfaction" },
+  { icon: Users, value: "10+", label: "Clients" },
+  { icon: Sparkles, value: "95%", label: "Satisfaction" },
 ];
 
 const PortfolioBanner = () => {

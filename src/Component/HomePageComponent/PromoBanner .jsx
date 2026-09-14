@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useAuth } from '../../Context/AuthContext'
 import AuthModal from '../Auth/AuthModal'
 import EmployerCTAModal from '../Auth/EmployerCTAModal'
+import GetListedModal from '../GetListedForm/GetListedForm'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,11 +21,14 @@ const PromoBanner = () => {
     const contentRef = useRef(null)
     const imageRef = useRef(null)
     const featuresRef = useRef(null)
+   
 
     const { user } = useAuth()
     const navigate = useNavigate()
     const [showCTAModal, setShowCTAModal] = useState(false)
     const [showAuthModal, setShowAuthModal] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const [showlistingForm, setShowlistingForm] = useState(false);
 
     const handleStartCampaign = () => {
         if (user && user.role === 'employer') {
@@ -130,7 +134,7 @@ const PromoBanner = () => {
                         </p>
 
                         <button
-                            onClick={handleStartCampaign}
+                            onClick={() => setShowlistingForm(true)}
                             className='flex items-center gap-2 bg-yellow-400 text-black font-bold text-sm px-6 py-3 rounded-md mt-7 shadow-md
                             transition-all duration-300 ease-out
                             hover:bg-yellow-300 hover:-translate-y-1
@@ -220,6 +224,22 @@ const PromoBanner = () => {
         {showAuthModal && (
             <AuthModal onClose={() => setShowAuthModal(false)} />
         )}
+
+        {showlistingForm && (
+             <GetListedModal
+        isOpen={showlistingForm}
+        onClose={() => setShowlistingForm(false)}
+        onSubmit={(data) => {
+            console.log("Your Business service will upload successfully, please wait for admin approval.", data)
+        }}
+    />
+        )}
+
+        {/* <GetListedModal 
+        isOpen={true}
+        onClose={() => setShowlistingForm(false)}
+        onSubmit={(data) => {console.log("Your Business service will upload succefully plz wait for admin approval.", data)}}
+        /> */}
     </section>
 )
 }

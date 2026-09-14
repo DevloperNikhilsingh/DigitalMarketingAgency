@@ -3,12 +3,10 @@ import ListingCard from "./ListingCard";
 import { CarouselArrows, CarouselPagination } from "./ListingControls";
 import listingData from "./listingData";
 
-// Try to use React Router if it's already available in the host project.
-// Falls back to a no-op navigator if react-router-dom isn't installed,
-// so this component never crashes a project that doesn't use routing.
+
 let useNavigateHook = null;
 try {
-  // eslint-disable-next-line global-require
+  
   useNavigateHook = require("react-router-dom").useNavigate;
 } catch (e) {
   useNavigateHook = null;
@@ -20,15 +18,14 @@ const DESKTOP_VISIBLE_COUNT = 2;
 const TopListings = () => {
   const total = listingData.length;
 
-  // Build an "extended" list with clones at both ends for a seamless
-  // infinite loop: [lastClone, ...real items, firstClone]
+
   const extendedListings = [
     listingData[total - 1],
     ...listingData,
     listingData[0],
   ];
 
-  // currentIndex is based on the EXTENDED array; real items start at index 1
+  
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
@@ -39,7 +36,7 @@ const TopListings = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  // Router navigate (optional — only if react-router-dom is present)
+
   const navigate = useNavigateHook ? useNavigateHook() : null;
 
   const handleViewDetails = useCallback(
@@ -48,15 +45,14 @@ const TopListings = () => {
       if (navigate) {
         navigate(path);
       } else {
-        // Graceful fallback when no router is configured in the host app.
-        // Avoids crashing while still giving predictable, visible behavior.
+        
         window.location.hash = path;
       }
     },
     [navigate]
   );
 
-  // ---- Responsive visible count ----
+  
   useEffect(() => {
     const updateVisibleCount = () => {
       if (window.innerWidth < 700) {
@@ -70,7 +66,7 @@ const TopListings = () => {
     return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
 
-  // ---- Core navigation ----
+ 
   const goNext = useCallback(() => {
     setIsTransitioning(true);
     setCurrentIndex((prev) => prev + 1);
@@ -83,23 +79,23 @@ const TopListings = () => {
 
   const goToDot = useCallback((dotIndex) => {
     setIsTransitioning(true);
-    setCurrentIndex(dotIndex + 1); // +1 to account for the leading clone
+    setCurrentIndex(dotIndex + 1); 
   }, []);
 
-  // ---- Seamless loop reset (no visible jump) ----
+ 
   const handleTransitionEnd = useCallback(() => {
     if (currentIndex === 0) {
-      // We slid to the fake "lastClone" at the start -> snap to real last item
+      
       setIsTransitioning(false);
       setCurrentIndex(total);
     } else if (currentIndex === total + 1) {
-      // We slid to the fake "firstClone" at the end -> snap to real first item
+      
       setIsTransitioning(false);
       setCurrentIndex(1);
     }
   }, [currentIndex, total]);
 
-  // Re-enable transition on next tick after a non-animated snap
+  
   useEffect(() => {
     if (!isTransitioning) {
       const id = requestAnimationFrame(() => {
@@ -109,10 +105,7 @@ const TopListings = () => {
     }
   }, [isTransitioning]);
 
-  // ---- Resync when tab becomes visible again ----
-  // Background tabs can throttle timers/rAF, occasionally leaving the
-  // carousel stuck on a clone slide (looks like the section vanished).
-  // When the tab regains focus, snap back to a safe, real slide.
+
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === "visible") {
@@ -131,7 +124,9 @@ const TopListings = () => {
     };
   }, [total]);
 
-  // ---- Autoplay ----
+
+  
+
   useEffect(() => {
     if (isPaused) return undefined;
 
@@ -152,7 +147,7 @@ const TopListings = () => {
       clearInterval(autoplayRef.current);
       autoplayRef.current = null;
     }
-    // The effect above will re-create the interval since currentIndex changes
+    
   }, []);
 
   const handlePrevClick = () => {
@@ -170,11 +165,10 @@ const TopListings = () => {
     goToDot(dotIndex);
   };
 
-  // ---- Hover pause/resume ----
   const handleMouseEnter = () => setIsPaused(true);
   const handleMouseLeave = () => setIsPaused(false);
 
-  // ---- Touch swipe ----
+  
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -190,21 +184,20 @@ const TopListings = () => {
     if (Math.abs(delta) > SWIPE_THRESHOLD) {
       resetAutoplayTimer();
       if (delta > 0) {
-        goNext(); // swipe left -> next
+        goNext(); 
       } else {
-        goPrev(); // swipe right -> previous
+        goPrev(); 
       }
     }
     touchStartX.current = 0;
     touchEndX.current = 0;
   };
 
-  // ---- Slide geometry ----
-  // Each "slide" occupies (100 / visibleCount)% of the track's width.
+  
   const slideWidthPercent = 100 / visibleCount;
   const translatePercent = currentIndex * slideWidthPercent;
 
-  // Active pagination dot maps the extended index back to the real range [0, total-1]
+  
   const activeDotIndex =
     ((currentIndex - 1) % total + total) % total;
 
@@ -215,7 +208,7 @@ const TopListings = () => {
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="w-6 h-[3px] bg-amber-400 rounded-full" />
+              <span className="w-6 h-0.75 bg-amber-400 rounded-full" />
               <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 border border-amber-200 text-xs font-semibold tracking-wide px-3 py-1 rounded-full uppercase">
                 Top Listings
               </span>
@@ -229,13 +222,12 @@ const TopListings = () => {
             </p>
           </div>
 
-          {/* Desktop arrows next to heading */}
           <div className="hidden sm:block">
             <CarouselArrows onPrev={handlePrevClick} onNext={handleNextClick} />
           </div>
         </div>
 
-        {/* Carousel */}
+       
         <div
           className="relative"
           onMouseEnter={handleMouseEnter}
@@ -275,13 +267,13 @@ const TopListings = () => {
             </div>
           </div>
 
-          {/* Mobile arrows below cards */}
+         
           <div className="flex sm:hidden justify-center gap-3 mt-5">
             <CarouselArrows onPrev={handlePrevClick} onNext={handleNextClick} />
           </div>
         </div>
 
-        {/* Pagination */}
+        
         <CarouselPagination
           total={total}
           activeIndex={activeDotIndex}

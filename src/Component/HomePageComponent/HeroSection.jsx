@@ -4,14 +4,15 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroImage from '../../assets/HeroImage.png'
 import { useNavigate } from 'react-router-dom'
+import HeroImages from '../../assets/HeroImage-Photoroom.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
-    { value: 200, suffix: '+', label: 'Projects Done' },
-    { value: 150, suffix: '+', label: 'Happy Clients' },
-    { value: 98, suffix: '%', label: 'Client Retention' },
-    { value: 10, suffix: '+', label: 'Years Experience' },
+    { value: 50, suffix: '+', label: 'Projects Done' },
+    { value: 10, suffix: '+', label: 'Happy Clients' },
+    { value: 95, suffix: '%', label: 'Client Retention' },
+    { value: 5, suffix: '+', label: 'Years Experience' },
 ]
 
 const HeroSection = () => {
@@ -21,14 +22,23 @@ const HeroSection = () => {
 
     const [query, setQuery] = useState('')
     const [locationQuery, setLocationQuery] = useState('')
+    const [error, setError] = useState('')
 
     const handleSearch = (e) => {
-    e.preventDefault()
-    const params = new URLSearchParams()
-    if (query.trim()) params.set('query', query.trim())
-    if (locationQuery.trim()) params.set('location', locationQuery.trim())
-    navigate(`/listing?${params.toString()}`)
-}
+        e.preventDefault()
+
+        if (!query.trim() && !locationQuery.trim()) {
+            setError('Please enter Business Name or Location')
+            return
+        }
+
+        setError('')
+
+        const params = new URLSearchParams()
+        if (query.trim()) params.set('query', query.trim())
+        if (locationQuery.trim()) params.set('location', locationQuery.trim())
+        navigate(`/listing?${params.toString()}`)
+    }
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -59,7 +69,7 @@ const HeroSection = () => {
 
                 {/* Left content */}
                 <div className='order-2 md:order-1 relative z-30'>
-                    <h1 className='text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight'>
+                    <h1 className='text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight'>
                         We Grow Brands <br />
                         <span className='text-yellow-400'>Digitally.</span>
                     </h1>
@@ -106,16 +116,20 @@ const HeroSection = () => {
                         </button>
                     </form>
 
-                    <div className='flex flex-wrap gap-4 mt-6 mb-4 md:mb-0 relative z-30'>
+                    {error && (
+                        <p className='text-red-500 text-xs mt-2'>{error}</p>
+                    )}
+
+                    <div className='flex flex-row gap-4 mt-6 mb-4 md:mb-0 relative z-30'>
                         <button
                         onClick={() => navigate("/contact")}
-                        className='flex items-center gap-2 bg-yellow-400 text-black font-bold text-sm px-6 py-3 rounded-md shadow-md
+                        className='flex items-center gap-2 bg-yellow-400 text-black font-bold text-xs px-6 py-3 rounded-md shadow-md
                             transition-all duration-300 ease-out hover:bg-yellow-300 hover:-translate-y-1 hover:shadow-yellow-400/50 hover:shadow-xl active:scale-90 active:translate-y-0'>
                             Get Started <ArrowRight size={16} className='transition-transform duration-300 group-hover:translate-x-1' />
                         </button>
                         <button
                         onClick={() => navigate("/portfolio")}
-                        className='border border-white/30 text-white font-bold text-sm px-6 py-3 rounded-md
+                        className='border border-white/30 text-white font-bold text-xs px-6 py-3 rounded-md
                             transition-all duration-300 ease-out hover:border-yellow-400 hover:text-yellow-400 hover:-translate-y-1 hover:bg-white/5 active:scale-90 active:translate-y-0'>
                             View Our Work
                         </button>
