@@ -32,7 +32,7 @@ const PromoBanner = () => {
 
     const handleStartCampaign = () => {
         if (user && user.role === 'employer') {
-            navigate('/employer/dashboard?tab=list-service')
+            setShowlistingForm(true)
         } else {
             setShowCTAModal(true)
         }
@@ -134,7 +134,7 @@ const PromoBanner = () => {
                         </p>
 
                         <button
-                            onClick={() => setShowlistingForm(true)}
+                            onClick={handleStartCampaign}
                             className='flex items-center gap-2 bg-yellow-400 text-black font-bold text-sm px-6 py-3 rounded-md mt-7 shadow-md
                             transition-all duration-300 ease-out
                             hover:bg-yellow-300 hover:-translate-y-1
@@ -222,7 +222,11 @@ const PromoBanner = () => {
         )}
 
         {showAuthModal && (
-            <AuthModal onClose={() => setShowAuthModal(false)} />
+            <AuthModal 
+            onClose={() => setShowAuthModal(false)} 
+            lockRole={true}
+            defaultRole='employer'
+            />
         )}
 
         {showlistingForm && (

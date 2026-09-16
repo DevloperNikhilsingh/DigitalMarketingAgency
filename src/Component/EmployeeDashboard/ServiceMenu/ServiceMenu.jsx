@@ -2,40 +2,14 @@ import React, { useState } from "react";
 import { Plus } from "lucide-react";
 
 import ServiceCard from "./ServiceCard/ServiceCard";
-import ServiceFormModal from "./ServiceFormModal/ServiceFormModal";
+import ServiceFormModal from "./ServiceFormModal/GetListedModal";
 import ServiceDetail from "./ServiceDetail/ServiceDetail";
 import SubServiceFormModal from "./SubServiceFormModal/SubServiceFormModal";
 import SubServiceDetail from "./SubServiceDetail/SubServiceDetail";
 import ConfirmDialog from "./ConfirmDialog/ConfirmDialog";
 import { INITIAL_SERVICES, ICON_BG_STYLES, nextId } from "./data/dummyData";
+import GetListedModal from "../../GetListedForm/GetListedForm";
 
-/**
- * ServiceMenu — the CMS for "My Services".
- *
- * Does NOT render the Sidebar or the top notification/header bar — those
- * live in Common/Sidebar and Common/DashboardHeader, rendered once by
- * HomeDashboard.jsx. This component only owns the "My Services" tab content.
- *
- * Three-level data model, all in local React state (no backend yet):
- *   Service { id, icon, title, description, status, date,
- *     subServices: [
- *       SubService { id, icon, title, description,
- *         caseStudies: [ { id, image, title, description }, ... up to MAX_CASE_STUDIES ]
- *       }
- *     ]
- *   }
- *
- * Views (drill-down, one at a time):
- *   1. Grid              -> all services, "+ Request New Service" to create
- *   2. Service Detail     -> service info (Edit/Delete) + Sub-Services table
- *                           (unlimited, add/edit/delete, click a row to open it)
- *   3. Sub-Service Detail  -> sub-service info (Edit/Delete) + Case Studies
- *                           table (max MAX_CASE_STUDIES, add/edit/delete)
- *
- * Every form modal and the delete confirmation are rendered ONCE here at
- * the top level (not inside each view) so "Edit"/"Delete" behave
- * identically no matter which screen triggers them.
- */
 const ServiceMenu = () => {
   const [services, setServices] = useState(INITIAL_SERVICES);
   const [selectedServiceId, setSelectedServiceId] = useState(null);
@@ -55,7 +29,7 @@ const ServiceMenu = () => {
     (ss) => ss.id === selectedSubServiceId
   );
 
-  // ---------- Service CRUD ----------
+ 
 
   const openCreateServiceForm = () => {
     setEditingService(null);
@@ -99,7 +73,7 @@ const ServiceMenu = () => {
     setConfirmTarget(null);
   };
 
-  // ---------- Sub-Service CRUD, scoped to the currently selected service ----------
+  
 
   const openCreateSubServiceForm = () => {
     setEditingSubService(null);
@@ -152,7 +126,7 @@ const ServiceMenu = () => {
     setConfirmTarget(null);
   };
 
-  // ---------- Case-study CRUD, scoped to the selected service + sub-service ----------
+  
 
   const handleAddCaseStudy = (data) => {
     setServices((prev) =>
@@ -221,7 +195,7 @@ const ServiceMenu = () => {
     );
   };
 
-  // ---------- Shared delete confirmation copy ----------
+  
 
   const confirmCopy = (() => {
     if (!confirmTarget) return { title: "", message: "", onConfirm: () => {} };
@@ -239,7 +213,7 @@ const ServiceMenu = () => {
     };
   })();
 
-  // ---------- Render ----------
+
 
   let content;
   if (selectedSubService) {
@@ -317,12 +291,12 @@ const ServiceMenu = () => {
     <>
       {content}
 
-      <ServiceFormModal
-        open={serviceFormOpen}
-        editingService={editingService}
-        onClose={() => setServiceFormOpen(false)}
-        onSubmit={handleServiceSubmit}
-      />
+      <GetListedModal
+    isOpen={serviceFormOpen}
+    editingService={editingService}
+    onClose={() => setServiceFormOpen(false)}
+    onSubmit={handleServiceSubmit}
+/>
 
       <SubServiceFormModal
         open={subServiceFormOpen}

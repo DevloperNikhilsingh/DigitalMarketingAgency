@@ -136,14 +136,13 @@ const Footer = () => {
             </div>
             
         {showloginform && (
-             <AuthModal
-        isOpen={showloginform}
+    <AuthModal
         onClose={() => setShowloginform(false)}
-        // onSubmit={(data) => {
-        //     console.log("Your Business service will upload successfully, please wait for admin approval.", data)
-        // }}
+        defaultRole='admin'
+        lockRole={true}
     />
-        )}
+)}
+        
 
         </footer>
     )

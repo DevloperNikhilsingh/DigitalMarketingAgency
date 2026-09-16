@@ -18,7 +18,7 @@ const EmployerCTAModal = ({ onClose, onAuthRequest }) => {
     }
 
     return (
-        <div className='fixed inset-0 z-[100] flex items-center justify-center px-4'>
+        <div className='fixed inset-0 z-100 flex items-center justify-center px-4'>
             <div
                 onClick={handleClose}
                 className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-250 ease-out

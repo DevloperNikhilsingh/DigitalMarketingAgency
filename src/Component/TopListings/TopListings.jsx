@@ -179,7 +179,7 @@ const TopListings = () => {
 
   const handleTouchEnd = () => {
     const delta = touchStartX.current - touchEndX.current;
-    const SWIPE_THRESHOLD = 40;
+    const SWIPE_THRESHOLD = 10;
 
     if (Math.abs(delta) > SWIPE_THRESHOLD) {
       resetAutoplayTimer();

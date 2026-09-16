@@ -7,7 +7,7 @@ const ListingCard = ({ listing, onViewDetails }) => {
   const [imgError, setImgError] = useState(false);
   const navigate = useNavigate();
 
-  const { name, category, location, image, rating, reviewCount, verified, description, isNew, } = listing;
+  const { name, category, location, image, rating, reviewCount, verified, description, isNew, address} = listing;
 
   return (
     <div
@@ -23,13 +23,13 @@ const ListingCard = ({ listing, onViewDetails }) => {
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200 text-neutral-400">
+          <div className="w-full h-full flex flex-col items-center justify-center bg-linear-to-br from-neutral-100 to-neutral-200 text-neutral-400">
             <ImageOff className="w-10 h-10 mb-1" strokeWidth={1.5} />
             <span className="text-xs font-medium">Image unavailable</span>
           </div>
         )}
 
-        {/* Badge: New / Recently Added */}
+        
         {isNew && (
           <span
             className="
@@ -47,7 +47,7 @@ const ListingCard = ({ listing, onViewDetails }) => {
         )}
 
         {/* Bottom accent line on image */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-amber-300 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-amber-400 via-amber-300 to-transparent" />
       </div>
 
       {/* Content section */}
@@ -77,9 +77,9 @@ const ListingCard = ({ listing, onViewDetails }) => {
             </span>
           </span>
 
-          <span className="flex items-center gap-1 text-neutral-500">
-            <MapPin className="w-4 h-4 text-neutral-400" strokeWidth={1.7} />
-            {location}
+          <span className="flex items-start gap-1 text-neutral-500 w-full sm:w-auto">
+            <MapPin className="w-4 h-4 text-neutral-400 shrink-0 mt-0.5" strokeWidth={1.7} />
+            {address}
           </span>
 
           {verified && (
