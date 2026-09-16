@@ -21,6 +21,7 @@ import HomeDashboard from './Component/EmployeeDashboard/Common/HomeDashboard'
 import ServiceRequests from './Component/EmployeeDashboard/ServiceRequestMenu/ServiceRequests'
 import BusinessDetail from './Component/BusinessDetail/BusinessDetail'
 import Listings from './Pages/Listings'
+import ManagePricing from './Component/AdminDashboardComponent/PricingTab/ManagePricing'
 
 function App() {
   return (
@@ -58,6 +59,9 @@ function App() {
         } />
         <Route path='/admin/dashboard/enquiry' element={<ProtectedRoute><AdminEnquiries /></ProtectedRoute>
         } />
+        <Route path='/admin/dashboard/pricing' element={<ProtectedRoute><ManagePricing /></ProtectedRoute>
+        } />
+        
 
         <Route path='/employer/dashboard' element={
           <ProtectedRoute role='employer'><HomeDashboard /></ProtectedRoute>
