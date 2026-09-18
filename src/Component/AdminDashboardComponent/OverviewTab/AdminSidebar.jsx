@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { LayoutGrid, Layers, Users, Settings, LogOut, Globe, Menu, X, Briefcase, FileCheck, Bell  } from 'lucide-react'
+import { LayoutGrid, Layers, Users, Settings, LogOut, Globe, Menu, X, Briefcase, FileCheck, Bell, IndianRupee  } from 'lucide-react'
 import { useAuth } from '../../../Context/AuthContext'
-import { FaMoneyBill } from 'react-icons/fa6'
 
 const navItems = [
     { icon: LayoutGrid, label: 'Overview', path: '/admin/dashboard' },
@@ -11,7 +10,7 @@ const navItems = [
     { icon: Users, label: 'Employers', path: '/admin/dashboard/employers' },
     { icon: FileCheck, label: 'Listing Request', path: '/admin/dashboard/newservices' },
     { icon: Bell, label: 'Enquiry', path: '/admin/dashboard/enquiry' },
-    { icon: FaMoneyBill, label: 'Pricing', path: '/admin/dashboard/pricing' },
+    { icon: IndianRupee, label: 'Pricing', path: '/admin/dashboard/pricing' },
     { icon: Settings, label: 'Settings', path: '/admin/dashboard/settings' },
 ]
 

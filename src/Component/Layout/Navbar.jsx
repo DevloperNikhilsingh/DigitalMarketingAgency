@@ -22,7 +22,7 @@ const Navbar = () => {
     const navigate = useNavigate()
     const [showAuthModal, setShowAuthModal] = useState(false)
 
-     const { user, logout } = useAuth()
+    const { user, logout } = useAuth()
 
     const isActive = (linkPath) => {
         if (linkPath === '/') return location.pathname === '/'
@@ -59,43 +59,47 @@ const Navbar = () => {
 
 
                 <div className='hidden md:block'>
-    {user ? (
-        <div className='relative group'>
-            <button
-                className='w-9.5 h-9.5 flex items-center justify-center rounded-full bg-amber-400 text-black font-bold text-sm uppercase
+                    {user ? (
+                        <div className='relative group'>
+                            <button
+                                className='w-9.5 h-9.5 flex items-center justify-center rounded-full bg-amber-400 text-black font-bold text-sm uppercase
                     transition-all duration-300 hover:bg-amber-300'
-            >
-                {user.name ? user.name.charAt(0) : user.email.charAt(0)}
-            </button>
+                            >
+                                {user.name ? user.name.charAt(0) : user.email.charAt(0)}
+                            </button>
 
-            {/* Dropdown */}
-            <div className='absolute right-0 mt-2 w-40 bg-neutral-900 border border-white/10 rounded-lg shadow-xl
-                opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
-                <div className='px-4 py-3 border-b border-white/10'>
-                    <p className='text-white text-sm font-semibold truncate'>{user.name || user.email}</p>
-                    <p className='text-gray-500 text-xs capitalize'>{user.role}</p>
-                </div>
-                <button
-                    onClick={() => {
-                        logout()
-                        navigate('/')
-                    }}
-                    className='w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-white/5 transition-colors'
-                >
-                    Logout
-                </button>
-            </div>
-        </div>
-    ) : (
-        <button
-            onClick={() => setShowAuthModal(true)}
-            className='flex w-32.5 h-9.5 justify-center items-center bg-amber-400 text-black text-sm font-bold rounded-md shadow-md
+                            {/* Dropdown */}
+                            <div className='absolute right-0 mt-2 w-40 bg-neutral-900 border border-white/10 rounded-lg shadow-xl
+                             opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
+                                <button
+                                    onClick={() => {
+                                        navigate(user.role == 'admin' ? '/admin/dashboard' : '/employer/dashboard')
+                                    }}
+                                    className='w-full text-left px-4 py-2.5 text-sm text-yellow-400 hover:bg-white/5 transition-colors'
+                                >
+                                    Dashboard
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        logout()
+                                        navigate('/')
+                                    }}
+                                    className='w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-white/5 transition-colors'
+                                >
+                                    Logout
+                                </button>
+                            </div>
+                        </div>
+                    ) : (
+                        <button
+                            onClick={() => setShowAuthModal(true)}
+                            className='flex w-32.5 h-9.5 justify-center items-center bg-amber-400 text-black text-sm font-bold rounded-md shadow-md
                 transition-all duration-300 ease-in-out hover:bg-amber-300 hover:shadow-amber-400/40 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:scale-95'
-        >
-            Free Listed
-        </button>
-    )}
-</div>
+                        >
+                            Free Listed
+                        </button>
+                    )}
+                </div>
 
                 <button
                     className='md:hidden text-white p-1 transition-transform duration-300 active:scale-90'
@@ -157,20 +161,12 @@ const Navbar = () => {
             </div>
 
             {showAuthModal && (
-    <AuthModal
-        onClose={() => setShowAuthModal(false)}
-        defaultRole='employer'
-        lockRole={true}
-    />
-)}
-
-            {/* <GetListedModal
-                    isOpen={showListingModal}
-                    onClose={() => setShowListingModal(false)}
-                    onSubmit={(data) => {
-                        console.log('New listing submitted:', data)
-                    }}
-                /> */}
+                <AuthModal
+                    onClose={() => setShowAuthModal(false)}
+                    defaultRole='employer'
+                    lockRole={true}
+                />
+            )}
         </nav>
     )
 }
