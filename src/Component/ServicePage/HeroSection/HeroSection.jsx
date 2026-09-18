@@ -4,10 +4,10 @@ import { Users, ShieldCheck, Repeat, Award, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const stats = [
-  { icon: Users, target: 50, suffix: "+", label: "Projects Completed" },
+  { icon: Users, target: 15, suffix: "+", label: "Projects Completed" },
   { icon: ShieldCheck, target: 10, suffix: "+", label: "Happy Clients" },
-  { icon: Repeat, target: 95, suffix: "%", label: "Client Retention" },
-  { icon: Award, target: 5, suffix: "+", label: "Years Experience" },
+  { icon: Repeat, target: 90, suffix: "%", label: "Client Retention" },
+  { icon: Award, target: 3, suffix: "+", label: "Years Experience" },
 ];
 
 // Animates a number from 0 -> target whenever it scrolls into view

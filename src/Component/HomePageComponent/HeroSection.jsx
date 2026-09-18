@@ -9,10 +9,10 @@ import HeroImages from '../../assets/HeroImage-Photoroom.png'
 gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
-    { value: 50, suffix: '+', label: 'Projects Done' },
+    { value: 15, suffix: '+', label: 'Projects Done' },
     { value: 10, suffix: '+', label: 'Happy Clients' },
-    { value: 95, suffix: '%', label: 'Client Retention' },
-    { value: 5, suffix: '+', label: 'Years Experience' },
+    { value: 90, suffix: '%', label: 'Client Retention' },
+    { value: 3, suffix: '+', label: 'Years Experience' },
 ]
 
 const HeroSection = () => {

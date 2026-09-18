@@ -15,10 +15,10 @@ const fadeUp = {
 };
 
 const stats = [
-  { icon: Users, num: "250+", label: "Happy Clients" },
-  { icon: Rocket, num: "500+", label: "Projects Completed" },
-  { icon: TrendingUp, num: "98%", label: "Client Satisfaction" },
-  { icon: Trophy, num: "10+", label: "Years of Experience" },
+  { icon: Users, num: "10", label: "Happy Clients" },
+  { icon: Rocket, num: "15+", label: "Projects Completed" },
+  { icon: TrendingUp, num: "90%", label: "Client Satisfaction" },
+  { icon: Trophy, num: "3+", label: "Years of Experience" },
 ];
 
 const values = [
@@ -146,7 +146,7 @@ export default function AboutPage() {
               className="w-full rounded-2xl block"
             />
             <div className="absolute -bottom-6 -right-2 w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#0d0d0d] border-2 border-amber-400 flex flex-col items-center justify-center text-center">
-              <span className="text-xl sm:text-2xl font-extrabold">10+</span>
+              <span className="text-xl sm:text-2xl font-extrabold">3+</span>
               <span className="text-[10px] sm:text-[11px] text-gray-400 leading-tight">
                 Years of
                 <br />

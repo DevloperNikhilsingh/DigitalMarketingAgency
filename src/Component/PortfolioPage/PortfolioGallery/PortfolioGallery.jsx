@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import PortfolioFilters from "../PortfolioFilters/PortfolioFilters";
@@ -17,7 +18,10 @@ const sizeClass = {
 };
 
 const PortfolioGallery = () => {
-  const [activeCategory, setActiveCategory] = useState("All Works");
+  const [searchParams] = useSearchParams();
+  const categoryFromUrl = searchParams.get("category");
+
+  const [activeCategory, setActiveCategory] = useState(categoryFromUrl || "All Works");
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredProjects = useMemo(() => {

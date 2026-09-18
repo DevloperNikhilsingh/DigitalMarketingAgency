@@ -1,15 +1,37 @@
 import React, { useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { filters, portfolioItems } from "../../data/portfolioData";
 import PortfolioFilterTabs from "../PortFolioComponent/PortfolioFilterTabs";
 import PortfolioCard from "../PortFolioComponent/PortfolioCard";
+import { ArrowRight } from 'lucide-react';
+
+const HOME_LIMIT = 6
+
+// Home page ke filter names -> Portfolio (Gallery) page ke actual category names
+// Gallery ke categories: "All Works", "Graphics", "Video Editing", "ADS", "SEO", "Web Development", "Other"
+const categoryMap = {
+    'All': 'All Works',
+    'SEO': 'SEO',
+    'Social Media': 'ADS',
+    'Google Ads': 'ADS',
+    'Web Design': 'Web Development',
+}
 
 const PortfolioSection = () => {
     const [activeFilter, setActiveFilter] = useState('All')
+    const navigate = useNavigate()
 
     const filteredItems = useMemo(() => {
-        if (activeFilter === 'All') return portfolioItems
-        return portfolioItems.filter((item) => item.category === activeFilter)
+        const items = activeFilter === 'All'
+            ? portfolioItems
+            : portfolioItems.filter((item) => item.category === activeFilter)
+        return items.slice(0, HOME_LIMIT)
     }, [activeFilter])
+
+    const handleViewMore = () => {
+        const mappedCategory = categoryMap[activeFilter] || 'All Works'
+        navigate(`/portfolio?category=${encodeURIComponent(mappedCategory)}`)
+    }
 
     return (
         <section className='w-full bg-neutral-50 py-16 md:py-24'>
@@ -35,11 +57,22 @@ const PortfolioSection = () => {
                     onFilterChange={setActiveFilter}
                 />
 
-                {/* Cards grid - only active filter's items show */}
+                {/* Cards grid - only active filter's items show (max 6) */}
                 <div className='grid md:grid-cols-3 gap-6'>
                     {filteredItems.map((item) => (
                         <PortfolioCard key={item.id} item={item} />
                     ))}
+                </div>
+
+                {/* View More button -> goes to portfolio page with matching category */}
+                <div className='flex justify-center mt-10'>
+                    <button
+                        onClick={handleViewMore}
+                        className='flex items-center gap-2 border-2 border-yellow-400 text-gray-900 font-bold text-sm px-8 py-3.5 rounded-md
+                            transition-all duration-300 ease-out hover:bg-yellow-400 hover:-translate-y-1 hover:shadow-lg hover:shadow-yellow-400/40 active:scale-95'
+                    >
+                        View More  <ArrowRight size={16}/>
+                    </button>
                 </div>
             </div>
         </section>

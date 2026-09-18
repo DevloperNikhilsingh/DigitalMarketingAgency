@@ -4,9 +4,9 @@ import { ArrowRight, Play, Users } from 'lucide-react'
 
 const stats = [
     { icon: Users, value: 10, suffix: '+', label: 'Happy Clients' },
-    { icon: Users, value: 50, suffix: '+', label: 'Projects Completed' },
-    { icon: Users, value: 95, suffix: '%', label: 'Client Satisfaction' },
-    { icon: Users, value: 5, suffix: '+', label: 'Years of Experience' },
+    { icon: Users, value: 15, suffix: '+', label: 'Projects Completed' },
+    { icon: Users, value: 90, suffix: '%', label: 'Client Satisfaction' },
+    { icon: Users, value: 3, suffix: '+', label: 'Years of Experience' },
 ]
 
 const useCountUp = (end, start, duration = 1500) => {
@@ -127,7 +127,7 @@ const AboutHero = () => {
                         className='rounded-2xl w-full max-w-md object-cover shadow-2xl'
                     />
                     <div className='absolute -bottom-6 -left-6 w-28 h-28 rounded-full bg-black border-2 border-yellow-400/40 flex flex-col items-center justify-center text-center'>
-                        <span className='text-yellow-400 font-extrabold text-lg'>5+</span>
+                        <span className='text-yellow-400 font-extrabold text-lg'>3+</span>
                         <span className='text-gray-300 text-[10px]'>Years of<br />Experience</span>
                     </div>
                 </div>
