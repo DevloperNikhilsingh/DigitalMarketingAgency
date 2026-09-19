@@ -8,8 +8,26 @@ import portfolioProjects from "./portfolioData";
 
 const INITIAL_COUNT = 14;
 
-// TODO: replace with your actual Google Drive folder/file link
-const DRIVE_LINK = "https://drive.google.com/drive/folders/YOUR_FOLDER_ID";
+// Har category ka apna Google Drive folder link.
+// Key ka naam category ke naam jaisa hi likho (spaces/capital ka farak nahi padta).
+const DRIVE_LINKS = {
+  "All Works": "https://drive.google.com/drive/folders/1rwD1mU30jH1r1hoTMeNIVdwaE_IlRW9b?usp=sharing",
+  "Video Editing": "https://drive.google.com/drive/folders/1DBedLA_ic1T3tdT5UC7Stzulzc8_oQui",
+  SEO: "https://drive.google.com/drive/folders/16Ne0FveZrY793SXz0iE8KTGQS2MOFtnC",
+  Ads: "https://drive.google.com/drive/folders/15P7tAZrVu9wzXqqwxS7Q1I52kPadJoO4",
+  Graphics: "https://drive.google.com/drive/folders/1YOcyUvvsK0VvP1riwEOQGnmawb0sRdZb",
+  "Website Development": "https://drive.google.com/drive/folders/1-HS2mh2g6asskTwxGcR660zZqQQZYbKw",
+};
+
+// "Video Editing", "video editing", "VideoEditing" sab same maane jaayenge
+const normalize = (text) => text.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+const getDriveLink = (category) => {
+  const matchedKey = Object.keys(DRIVE_LINKS).find(
+    (key) => normalize(key) === normalize(category)
+  );
+  return matchedKey ? DRIVE_LINKS[matchedKey] : DRIVE_LINKS["All Works"];
+};
 
 const sizeClass = {
   tall: "row-span-2",
@@ -39,6 +57,9 @@ const PortfolioGallery = () => {
   }, [activeCategory, searchTerm]);
 
   const visibleProjects = filteredProjects.slice(0, INITIAL_COUNT);
+
+  // Active tab ke hisaab se Drive link
+  const driveLink = getDriveLink(activeCategory);
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
@@ -86,7 +107,7 @@ const PortfolioGallery = () => {
 
         <div className="mt-10 flex justify-center">
           <motion.a
-            href={DRIVE_LINK}
+            href={driveLink}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}

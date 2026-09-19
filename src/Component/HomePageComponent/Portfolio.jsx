@@ -37,7 +37,7 @@ const PortfolioSection = () => {
         <section className='w-full bg-neutral-50 py-16 md:py-24'>
             <div className='max-w-6xl mx-auto px-4 md:px-6'>
 
-                {/* Heading */}
+                
                 <div className='text-center mb-10'>
                     <span className='inline-block border border-yellow-400 text-yellow-500 text-xs font-bold tracking-widest px-4 py-1.5 rounded-full mb-4'>
                         RESULT THAT MATTER
@@ -50,21 +50,21 @@ const PortfolioSection = () => {
                     </p>
                 </div>
 
-                {/* Filter tabs */}
+               
                 <PortfolioFilterTabs
                     filters={filters}
                     activeFilter={activeFilter}
                     onFilterChange={setActiveFilter}
                 />
 
-                {/* Cards grid - only active filter's items show (max 6) */}
+                
                 <div className='grid md:grid-cols-3 gap-6'>
                     {filteredItems.map((item) => (
                         <PortfolioCard key={item.id} item={item} />
                     ))}
                 </div>
 
-                {/* View More button -> goes to portfolio page with matching category */}
+                
                 <div className='flex justify-center mt-10'>
                     <button
                         onClick={handleViewMore}

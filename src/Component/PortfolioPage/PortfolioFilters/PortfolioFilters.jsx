@@ -23,7 +23,7 @@ const PortfolioFilters = ({
         />
       </div>
 
-      <div className="flex w-full gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:pb-0 [&::-webkit-scrollbar]:hidden">
+      <div className="flex w-full gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-none] sm:pb-0 [&::-webkit-scrollbar]:hidden">
         {categories.map((category) => {
           const isActive = category === activeCategory;
           return (

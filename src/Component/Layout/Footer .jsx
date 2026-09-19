@@ -3,6 +3,7 @@ import { MessageCircle, Phone, Mail, MapPin, Sparkles } from 'lucide-react'
 import { FaFacebook, FaXTwitter, FaWhatsapp } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import AuthModal from '../Auth/AuthModal'
+import logo from '../../assets/digital-marketing.png'
 
 const quickLinks = [
     { name: 'Home', path: '/' },
@@ -26,9 +27,7 @@ const whatsappMessage = "Hello Sir! I would like to know more about your digital
 
 const socialLinks = [
     { Icon: FaFacebook, href: 'https://facebook.com/yourpage' },
-    { Icon: FaXTwitter, href: 'https://twitter.com/yourpage' },
     { Icon: FaWhatsapp, href: `https://wa.me/917007314944?text=${encodeURIComponent(whatsappMessage)}` },
-    { Icon: MessageCircle, href: '/contact' },
 ]
 
 const Footer = () => {
@@ -42,14 +41,22 @@ const Footer = () => {
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 pb-10 border-b border-white/10'>
 
                     {/* Brand */}
-                    <div>
-                        <div className='flex items-center gap-2 mb-4'>
-                            <Sparkles className='text-yellow-400' size={20} />
-                            <span className='text-white font-extrabold text-lg'>DigiServices</span>
-                        </div>
-                        <p className='text-gray-400 text-sm mb-5'>
+                    <div className='w-full flex flex-col gap-4'>
+                        <div className='w-full flex gap-3 items-center justify-center'>
+                         <div className='flex items-center shrink-0 h-full'>
+                                <Link to='/' className='flex items-center h-full'>
+                                    <img 
+                                        src={logo} 
+                                        alt="logo" 
+                                        className='h-full max-h-14 md:max-h-20  w-auto max-w-50 object-contain py-1'
+                                    />
+                                </Link>
+                            </div>
+                        <p className='text-gray-400 text-sm mb-5 flex justify-start'>
                             We help brands grow with smart digital marketing strategies.
                         </p>
+                        </div>
+
                         <div className='flex items-center gap-3'>
                             {socialLinks.map(({ Icon, href }, i) => (
                                 <a
@@ -58,7 +65,7 @@ const Footer = () => {
                                     target='_blank'
                                     rel='noopener noreferrer'
                                     className='w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0
-                transition-all duration-300 ease-out hover:bg-yellow-400 hover:-translate-y-1'
+                                    transition-all duration-300 ease-out hover:bg-yellow-400 hover:-translate-y-1'
                                 >
                                     <Icon className='text-white transition-colors duration-300 hover:text-black' size={15} />
                                 </a>

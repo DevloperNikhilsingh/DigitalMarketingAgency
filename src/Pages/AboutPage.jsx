@@ -15,9 +15,9 @@ const fadeUp = {
 };
 
 const stats = [
-  { icon: Users, num: "10", label: "Happy Clients" },
-  { icon: Rocket, num: "15+", label: "Projects Completed" },
-  { icon: TrendingUp, num: "90%", label: "Client Satisfaction" },
+  { icon: Users, num: "110+", label: "Happy Clients" },
+  { icon: Rocket, num: "120+", label: "Projects Completed" },
+  { icon: TrendingUp, num: "95%", label: "Client Satisfaction" },
   { icon: Trophy, num: "3+", label: "Years of Experience" },
 ];
 

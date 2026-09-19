@@ -10,16 +10,15 @@ const collageImages = [
 ];
 
 const stats = [
-  { icon: Layers, value: "15+", label: "Projects" },
+  { icon: Layers, value: "120+", label: "Projects" },
   { icon: Grid3x3, value: "3+", label: "Experience" },
-  { icon: Users, value: "10+", label: "Clients" },
-  { icon: Sparkles, value: "90%", label: "Satisfaction" },
+  { icon: Users, value: "110+", label: "Clients" },
+  { icon: Sparkles, value: "95%", label: "Satisfaction" },
 ];
 
 const PortfolioBanner = () => {
   return (
     <section className="relative overflow-hidden bg-linear-to-br from-[#14213D] via-[#0B0F1A] to-black px-5 pb-24 pt-16 sm:px-8 lg:px-12 lg:pt-20">
-      {/* decorative glow */}
       <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#F5A623]/20 blur-[100px]" />
       <div className="pointer-events-none absolute -right-10 bottom-0 h-64 w-64 rounded-full bg-[#F5A623]/10 blur-[100px]" />
 

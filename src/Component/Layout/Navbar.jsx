@@ -4,6 +4,8 @@ import { Menu, X } from 'lucide-react'
 import GetListedModal from '../GetListedForm/GetListedForm'
 import AuthModal from '../Auth/AuthModal'
 import { useAuth } from '../../Context/AuthContext'
+import logo from '../../../src/assets/digital-marketing.png'
+
 
 const navLinks = [
     { name: 'Home', link: '/' },
@@ -31,14 +33,17 @@ const Navbar = () => {
 
     return (
         <nav className='w-full bg-black sticky top-0 z-50 shadow-lg'>
-            <div className='max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 py-4'>
-                <div className='flex items-center'>
-                    <Link to='/'>
-                        <h1 className='text-xl font-semibold text-white transition-transform duration-300 hover:scale-105'>
-                            Digi<span className='text-yellow-500'>Service</span>
-                        </h1>
+            <div className='max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 h-16 md:h-20'>
+                <div className='flex items-center shrink-0 h-full'>
+                    <Link to='/' className='flex items-center h-full'>
+                        <img
+                            src={logo}
+                            alt="logo"
+                            className='h-full max-h-20 md:max-h-20  w-auto max-w-50 object-contain py-1'
+                        />
                     </Link>
                 </div>
+
 
                 <div className='hidden md:flex items-center gap-8'>
                     {navLinks.map((link) => (
@@ -122,9 +127,15 @@ const Navbar = () => {
                         ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
             >
                 <div className='flex justify-between items-center px-5 py-4 border-b border-white/10'>
-                    <h1 className='text-lg font-semibold text-white'>
-                        Digi<span className='text-yellow-500'>Service</span>
-                    </h1>
+                    <div className='flex items-center shrink-0 h-full'>
+                        <Link to='/' className='flex items-center h-full'>
+                            <img
+                                src={logo}
+                                alt="logo"
+                                className='h-full max-h-20 md:max-h-20  w-auto max-w-50 object-contain py-1'
+                            />
+                        </Link>
+                    </div>
                     <button
                         onClick={() => setIsOpen(false)}
                         className='text-white p-1 transition-transform duration-300 active:scale-90 hover:text-amber-400'
