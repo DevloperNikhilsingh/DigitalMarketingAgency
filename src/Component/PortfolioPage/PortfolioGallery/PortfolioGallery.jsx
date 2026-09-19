@@ -8,8 +8,6 @@ import portfolioProjects from "./portfolioData";
 
 const INITIAL_COUNT = 14;
 
-// Har category ka apna Google Drive folder link.
-// Key ka naam category ke naam jaisa hi likho (spaces/capital ka farak nahi padta).
 const DRIVE_LINKS = {
   "All Works": "https://drive.google.com/drive/folders/1rwD1mU30jH1r1hoTMeNIVdwaE_IlRW9b?usp=sharing",
   "Video Editing": "https://drive.google.com/drive/folders/1DBedLA_ic1T3tdT5UC7Stzulzc8_oQui",
@@ -19,7 +17,7 @@ const DRIVE_LINKS = {
   "Website Development": "https://drive.google.com/drive/folders/1-HS2mh2g6asskTwxGcR660zZqQQZYbKw",
 };
 
-// "Video Editing", "video editing", "VideoEditing" sab same maane jaayenge
+
 const normalize = (text) => text.toLowerCase().replace(/[^a-z0-9]/g, "");
 
 const getDriveLink = (category) => {
@@ -58,7 +56,7 @@ const PortfolioGallery = () => {
 
   const visibleProjects = filteredProjects.slice(0, INITIAL_COUNT);
 
-  // Active tab ke hisaab se Drive link
+ 
   const driveLink = getDriveLink(activeCategory);
 
   const handleCategoryChange = (category) => {

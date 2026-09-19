@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 const plans = [
     {
         name: 'Starter',
-        price: '₹4,999',
+        price: '₹2500',
         desc: 'Perfect for small businesses',
         features: ['SEO Audit', 'Keyword Research', 'On-Page SEO', 'Monthly Report'],
         featured: false,
@@ -23,7 +23,7 @@ const plans = [
     },
     {
         name: 'Pro',
-        price: '₹17,499',
+        price: '₹15,000',
         desc: 'For established businesses',
         features: ['Everything in Growth', 'Advanced SEO', 'Conversion Optimization', 'Dedicated Manager'],
         featured: false,

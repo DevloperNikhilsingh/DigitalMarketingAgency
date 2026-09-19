@@ -141,7 +141,7 @@ const PromoBanner = () => {
                             hover:shadow-yellow-400/40 hover:shadow-xl
                             active:scale-95'
                         >
-                            Start Your Campaign
+                            Free Listing
                             <ArrowRight size={16} />
                         </button>
 
