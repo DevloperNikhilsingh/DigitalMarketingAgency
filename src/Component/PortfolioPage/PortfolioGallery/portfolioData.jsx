@@ -1,12 +1,3 @@
-// Central data source for all portfolio projects.
-// Add/remove/edit projects here — Gallery, Filters and Trending sections
-// all read from this single array.
-//
-// IMPORTANT: `category` must always be one of the values in `categories`
-// below (except "All Works", which is just the "show everything" filter).
-// `tag` is the shorter label shown on the card chip — keep it consistent
-// with whatever `category` it belongs to.
-
 export const categories = [
   "All Works",
   "Graphics",
@@ -166,8 +157,15 @@ const portfolioProjects = [
     title: "Jagannath Yatra",
     category: "Video Editing",
     tag: "Video Reel Edit",
+    
     image:
-      "https://images.unsplash.com/photo-1600100897205-830cf70f3fed?q=80&w=900&auto=format&fit=crop",
+      "https://images.pexels.com/videos/27021307/biggest-festival-on-earth-city-of-joy-durga-durga-puja-27021307.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+   
+    video: [
+      "https://videos.pexels.com/video-files/27021307/12049593_1280_720_60fps.mp4",
+      "https://videos.pexels.com/video-files/27021307/12049593_1920_1080_60fps.mp4",
+      "https://videos.pexels.com/video-files/27021307/12049593_2560_1440_60fps.mp4",
+    ],
     description: "Highlight reel edit of the Rath Yatra procession for social media.",
     size: "regular",
     trending: true,
@@ -178,7 +176,11 @@ const portfolioProjects = [
     category: "Video Editing",
     tag: "Travel Reel Edit",
     image:
-      "https://images.unsplash.com/photo-1600100897193-cf83f2601a76?q=80&w=900&auto=format&fit=crop",
+      "https://images.pexels.com/videos/29214416/banaras-foreigner-in-varanasi-kashi-varanasi-29214416.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+    video: [
+      "https://videos.pexels.com/video-files/29214416/12612047_1280_720_50fps.mp4",
+      "https://videos.pexels.com/video-files/29214416/12612047_1920_1080_50fps.mp4",
+    ],
     description: "Cinematic travel reel edit covering the pilgrimage circuit.",
     size: "regular",
     trending: true,
@@ -200,7 +202,10 @@ const portfolioProjects = [
     category: "Video Editing",
     tag: "Lookbook Reel Edit",
     image:
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=900&auto=format&fit=crop",
+      "https://images.pexels.com/videos/853800/free-video-853800.jpg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+    video: [
+      "https://videos.pexels.com/video-files/853800/853800-hd_1920_1080_25fps.mp4",
+    ],
     description: "Lookbook reel edit for a fashion drop launch.",
     size: "regular",
     trending: true,

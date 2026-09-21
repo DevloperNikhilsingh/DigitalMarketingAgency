@@ -14,9 +14,10 @@ const DRIVE_LINKS = {
   SEO: "https://drive.google.com/drive/folders/16Ne0FveZrY793SXz0iE8KTGQS2MOFtnC",
   Ads: "https://drive.google.com/drive/folders/15P7tAZrVu9wzXqqwxS7Q1I52kPadJoO4",
   Graphics: "https://drive.google.com/drive/folders/1YOcyUvvsK0VvP1riwEOQGnmawb0sRdZb",
-  "Website Development": "https://drive.google.com/drive/folders/1-HS2mh2g6asskTwxGcR660zZqQQZYbKw",
+  "Web Development": "https://drive.google.com/drive/folders/1-HS2mh2g6asskTwxGcR660zZqQQZYbKw",
 };
 
+const VIDEO_CATEGORY = "Video Editing";
 
 const normalize = (text) => text.toLowerCase().replace(/[^a-z0-9]/g, "");
 
@@ -56,8 +57,10 @@ const PortfolioGallery = () => {
 
   const visibleProjects = filteredProjects.slice(0, INITIAL_COUNT);
 
- 
   const driveLink = getDriveLink(activeCategory);
+
+  
+  const showVideo = activeCategory === VIDEO_CATEGORY;
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
@@ -97,6 +100,7 @@ const PortfolioGallery = () => {
                   key={project.id}
                   project={project}
                   className={sizeClass[project.size] || ""}
+                  showVideo={showVideo}
                 />
               ))}
             </AnimatePresence>
