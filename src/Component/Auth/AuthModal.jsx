@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { X, Mail, Lock, LogIn, User, Building2, UserCog, Briefcase, KeyRound } from 'lucide-react'
 import { useAuth } from '../../Context/AuthContext'
+import PasswordChecklist from './PasswordChecklist'
 
 const AuthModal = ({ onClose, defaultRole = 'employer', lockRole = false }) => {
     const { loginAdmin, loginEmployer, registerEmployer, verifyOtp, resendOtp } = useAuth()
@@ -255,6 +256,7 @@ const AuthModal = ({ onClose, defaultRole = 'employer', lockRole = false }) => {
                                     className='w-full text-sm outline-none bg-transparent text-white placeholder:text-gray-600'
                                 />
                             </div>
+                            {mode === 'register' && <PasswordChecklist password={password} />}
                         </>
                     )}
 
