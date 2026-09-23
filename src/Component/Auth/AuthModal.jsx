@@ -1,26 +1,29 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { X, Mail, Lock, LogIn, User, Building2, UserCog, Briefcase } from 'lucide-react'
+import { X, Mail, Lock, LogIn, User, Building2, UserCog, Briefcase, KeyRound } from 'lucide-react'
 import { useAuth } from '../../Context/AuthContext'
 
 const AuthModal = ({ onClose, defaultRole = 'employer', lockRole = false }) => {
-    const { loginAdmin, loginEmployer, registerEmployer } = useAuth()
+    const { loginAdmin, loginEmployer, registerEmployer, verifyOtp, resendOtp } = useAuth()
     const navigate = useNavigate()
 
     const [role, setRole] = useState(defaultRole)
-    const [mode, setMode] = useState('login')
+    const [mode, setMode] = useState('login') // 'login' | 'register' | 'otp'
 
     const [name, setName] = useState('')
     const [company, setCompany] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [otp, setOtp] = useState('')
     const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const resetFields = () => {
         setName('')
         setCompany('')
         setEmail('')
         setPassword('')
+        setOtp('')
         setError('')
     }
 
@@ -35,7 +38,7 @@ const AuthModal = ({ onClose, defaultRole = 'employer', lockRole = false }) => {
         setError('')
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         setError('')
 
@@ -44,7 +47,9 @@ const AuthModal = ({ onClose, defaultRole = 'employer', lockRole = false }) => {
                 setError('Please fill in both fields.')
                 return
             }
-            const result = loginAdmin({ email, password })
+            setLoading(true)
+            const result = await loginAdmin({ email, password })
+            setLoading(false)
             if (!result.success) {
                 setError(result.message)
                 return
@@ -59,16 +64,36 @@ const AuthModal = ({ onClose, defaultRole = 'employer', lockRole = false }) => {
                 setError('Please fill in all fields.')
                 return
             }
-            const result = registerEmployer({ name, email, password, company })
+            setLoading(true)
+            const result = await registerEmployer({ name, email, password, company })
+            setLoading(false)
             if (!result.success) {
                 setError(result.message)
                 return
             }
+            // Registration successful -> move to OTP verification step
+            setMode('otp')
+            return
+        }
 
-            const loginResult = loginEmployer({ email, password })
+        if (mode === 'otp') {
+            if (!otp) {
+                setError('Please enter the OTP sent to your email.')
+                return
+            }
+            setLoading(true)
+            const result = await verifyOtp({ email, otp })
+            if (!result.success) {
+                setLoading(false)
+                setError(result.message)
+                return
+            }
+            // OTP verified -> now log the user in
+            const loginResult = await loginEmployer({ email, password })
+            setLoading(false)
             if (!loginResult.success) {
                 setMode('login')
-                setError('Account created! Please login now.')
+                setError('Verified! Please login now.')
                 return
             }
             onClose()
@@ -76,17 +101,28 @@ const AuthModal = ({ onClose, defaultRole = 'employer', lockRole = false }) => {
             return
         }
 
+        // mode === 'login'
         if (!email || !password) {
             setError('Please fill in both fields.')
             return
         }
-        const result = loginEmployer({ email, password })
+        setLoading(true)
+        const result = await loginEmployer({ email, password })
+        setLoading(false)
         if (!result.success) {
             setError(result.message)
             return
         }
         onClose()
         navigate('/employer/dashboard')
+    }
+
+    const handleResendOtp = async () => {
+        setError('')
+        setLoading(true)
+        const result = await resendOtp(email)
+        setLoading(false)
+        setError(result.message)
     }
 
     return (
@@ -113,11 +149,17 @@ const AuthModal = ({ onClose, defaultRole = 'employer', lockRole = false }) => {
                         Digi<span className='text-yellow-400'>Service</span>
                     </h2>
                     <p className='text-gray-500 text-sm mt-1'>
-                        {role === 'admin' ? 'Admin Login' : mode === 'register' ? 'Create employer account' : 'Login to your account'}
+                        {role === 'admin'
+                            ? 'Admin Login'
+                            : mode === 'register'
+                            ? 'Create employer account'
+                            : mode === 'otp'
+                            ? 'Verify your email'
+                            : 'Login to your account'}
                     </p>
                 </div>
 
-                {!lockRole && (
+                {!lockRole && mode !== 'otp' && (
                     <div className='flex bg-white/5 border border-white/10 rounded-lg p-1 mb-5'>
                         <button
                             type='button'
@@ -165,39 +207,78 @@ const AuthModal = ({ onClose, defaultRole = 'employer', lockRole = false }) => {
                         </>
                     )}
 
-                    <div className='flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus-within:border-yellow-400'>
-                        <Mail className='text-gray-500 shrink-0' size={17} />
-                        <input
-                            type='email'
-                            placeholder='Email address'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className='w-full text-sm outline-none bg-transparent text-white placeholder:text-gray-600'
-                        />
-                    </div>
+                    {mode === 'otp' ? (
+                        <>
+                            <p className='text-gray-400 text-xs -mt-1'>
+                                We sent a 6-digit code to <span className='text-white'>{email}</span>
+                            </p>
+                            <div className='flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus-within:border-yellow-400'>
+                                <KeyRound className='text-gray-500 shrink-0' size={17} />
+                                <input
+                                    type='text'
+                                    placeholder='Enter OTP'
+                                    value={otp}
+                                    onChange={(e) => setOtp(e.target.value)}
+                                    maxLength={6}
+                                    className='w-full text-sm outline-none bg-transparent text-white placeholder:text-gray-600'
+                                />
+                            </div>
+                            <button
+                                type='button'
+                                onClick={handleResendOtp}
+                                disabled={loading}
+                                className='text-yellow-400 text-xs hover:underline self-start'
+                            >
+                                Resend OTP
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <div className='flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus-within:border-yellow-400'>
+                                <Mail className='text-gray-500 shrink-0' size={17} />
+                                <input
+                                    type='email'
+                                    placeholder='Email address'
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className='w-full text-sm outline-none bg-transparent text-white placeholder:text-gray-600'
+                                />
+                            </div>
 
-                    <div className='flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus-within:border-yellow-400'>
-                        <Lock className='text-gray-500 shrink-0' size={17} />
-                        <input
-                            type='password'
-                            placeholder='Password'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className='w-full text-sm outline-none bg-transparent text-white placeholder:text-gray-600'
-                        />
-                    </div>
+                            <div className='flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus-within:border-yellow-400'>
+                                <Lock className='text-gray-500 shrink-0' size={17} />
+                                <input
+                                    type='password'
+                                    placeholder='Password'
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className='w-full text-sm outline-none bg-transparent text-white placeholder:text-gray-600'
+                                />
+                            </div>
+                        </>
+                    )}
 
                     {error && <p className='text-red-400 text-xs'>{error}</p>}
 
                     <button
                         type='submit'
-                        className='flex items-center justify-center gap-2 bg-yellow-400 text-black font-bold text-sm py-3 rounded-lg mt-1 hover:bg-yellow-300'
+                        disabled={loading}
+                        className='flex items-center justify-center gap-2 bg-yellow-400 text-black font-bold text-sm py-3 rounded-lg mt-1 hover:bg-yellow-300 disabled:opacity-60'
                     >
-                        {role === 'admin' ? 'Login' : mode === 'register' ? 'Register' : 'Login'} <LogIn size={16} />
+                        {loading
+                            ? 'Please wait...'
+                            : role === 'admin'
+                            ? 'Login'
+                            : mode === 'register'
+                            ? 'Register'
+                            : mode === 'otp'
+                            ? 'Verify & Continue'
+                            : 'Login'}{' '}
+                        <LogIn size={16} />
                     </button>
                 </form>
 
-                {role === 'employer' && (
+                {role === 'employer' && mode !== 'otp' && (
                     <p className='text-center text-gray-500 text-xs mt-4'>
                         {mode === 'login' ? (
                             <>

@@ -19,7 +19,7 @@ const TrendingProjects = () => {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-2xl font-bold text-white sm:text-3xl">
-              Trending This Month
+              Trending This Month 
             </h2>
             <span className="mt-2 block h-1 w-10 rounded-full bg-[#F5A623]" />
           </div>

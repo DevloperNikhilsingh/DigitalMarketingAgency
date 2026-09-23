@@ -34,7 +34,7 @@ const WhyChooseWork = ({
   return (
     <section className="bg-[#F7F7F5] px-5 py-16 sm:px-8 lg:px-12">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Left: Heading + Points */}
+        
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -72,7 +72,6 @@ const WhyChooseWork = ({
           </ul>
         </motion.div>
 
-        {/* Right: Collage */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
