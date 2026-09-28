@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { Search, ChevronDown, Eye } from 'lucide-react'
 import EnquiryStatusBadge from './EnquiryStatusBadge'
 import EnquiryDetailModal from './EnquiryDetailModal'
@@ -9,10 +9,37 @@ const EnquiriesTable = ({ enquiries: initialEnquiries }) => {
     const [search, setSearch] = useState('')
     const [statusFilter, setStatusFilter] = useState('All')
     const [selected, setSelected] = useState(null)
+    const [contact, setContact] = useState([]);
 
     const handleStatusChange = (id, newStatus) => {
         setEnquiries((prev) => prev.map((e) => (e.id === id ? { ...e, status: newStatus } : e)))
     }
+
+    useEffect(() => {
+
+
+
+        const handlesubmit = async () => {
+            try {
+                const token = localStorage.getItem("adminToken");
+                const res = await fetch('http://localhost:8081/api/contact', {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
+
+                if (!res.ok) throw new Error("Fetching Data Failed");
+
+                const data = await res.json();
+                setContact(data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+    }, [])
 
     const filtered = useMemo(() => {
         return enquiries.filter((e) => {
