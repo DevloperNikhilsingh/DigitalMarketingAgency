@@ -21,7 +21,7 @@ const EnquiriesTable = ({ enquiries: initialEnquiries }) => {
 
         const handlesubmit = async () => {
             try {
-                const token = localStorage.getItem("adminToken");
+                const token = localStorage.getItem("digiservice_token");
                 const res = await fetch('http://localhost:8081/api/contact', {
                     method: 'GET',
                     headers: {
