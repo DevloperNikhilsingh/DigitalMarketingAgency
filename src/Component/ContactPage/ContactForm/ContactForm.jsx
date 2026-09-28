@@ -96,7 +96,7 @@ const ContactForm = () => {
         phonenumber: formData.phone,
         subject: formData.subject,
         category: formData.service,
-        Message: formData.message,
+        message: formData.message,
       }),
     });
 
