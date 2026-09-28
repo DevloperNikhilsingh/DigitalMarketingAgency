@@ -81,37 +81,35 @@ const ContactForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setStatus("sending");
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
+  setStatus("sending");
 
-    try {
-      fetch('http://localhost:8081/api/contact',
-      {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name : FormData.name,
-          emailaddress : FormData.email,
-          phonenumber: FormData.phonenumber,
-          subject : FormData.subject,
-          category: FormData.service,
-          Message : FormData.message,
-        }),
-      });
+  try {
+    const res = await fetch("http://localhost:8081/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.name,
+        emailaddress: formData.email,
+        phonenumber: formData.phone,
+        subject: formData.subject,
+        category: formData.service,
+        Message: formData.message,
+      }),
+    });
 
-      if (!res.ok) throw new Error("Submit failed");
+    if (!res.ok) throw new Error("Submit failed");
 
     setStatus("sent");
     setFormData(initialState);
     setTimeout(() => setStatus("idle"), 3000);
-
-    } catch (err) {
-      console.error(err);
+  } catch (err) {
+    console.error(err);
     setStatus("idle");
-    }
-  };
+  }
+};
 
   return (
     <div id="contact-form" className="relative rounded-2xl sm:rounded-3xl p-[1.5px] bg-linear-to-br from-[#F5A623]/50 via-gray-200 to-[#14213D]/20">
