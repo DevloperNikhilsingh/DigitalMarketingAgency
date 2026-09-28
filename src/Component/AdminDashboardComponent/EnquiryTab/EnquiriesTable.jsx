@@ -34,6 +34,21 @@ const EnquiriesTable = ({ enquiries: initialEnquiries }) => {
 
                 const data = await res.json();
                 setContact(data);
+
+                 // Backend fields ko table ke expected fields mein map karo
+            const mapped = data.map((c) => ({
+                id: String(c.id),
+                name: c.name,
+                subject: c.subject,
+                email: c.emailaddress,
+                phone: c.phonenumber,
+                category: c.category,
+                message: c.message,
+                date: c.createdAt ? new Date(c.createdAt).toLocaleDateString() : '-',
+                status: c.status || 'New',
+            }));
+
+            setEnquiries(mapped);
             } catch (error) {
                 console.error(error);
             }
