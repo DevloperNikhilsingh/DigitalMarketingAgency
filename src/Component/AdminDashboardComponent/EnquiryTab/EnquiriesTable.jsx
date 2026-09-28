@@ -54,6 +54,8 @@ const EnquiriesTable = ({ enquiries: initialEnquiries }) => {
             }
         }
 
+        handlesubmit();  
+
     }, [])
 
     const filtered = useMemo(() => {
