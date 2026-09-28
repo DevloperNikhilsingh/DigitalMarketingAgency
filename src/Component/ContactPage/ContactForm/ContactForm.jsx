@@ -85,11 +85,32 @@ const ContactForm = () => {
     e.preventDefault();
     if (!validate()) return;
     setStatus("sending");
-    setTimeout(() => {
-      setStatus("sent");
-      setFormData(initialState);
-      setTimeout(() => setStatus("idle"), 3000);
-    }, 1400);
+
+    try {
+      fetch('http://localhost:8081/api/contact',
+      {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name : FormData.name,
+          emailaddress : FormData.email,
+          phonenumber: FormData.phonenumber,
+          subject : FormData.subject,
+          category: FormData.service,
+          Message : FormData.message,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Submit failed");
+
+    setStatus("sent");
+    setFormData(initialState);
+    setTimeout(() => setStatus("idle"), 3000);
+
+    } catch (err) {
+      console.error(err);
+    setStatus("idle");
+    }
   };
 
   return (
